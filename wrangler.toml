@@ -1,0 +1,49 @@
+name = "awcms-micro-dev"
+main = "awcmsmicro-dev/templates/awcms-micro-default-cloudflare/src/worker.ts"
+compatibility_date = "2026-05-14"
+compatibility_flags = ["nodejs_compat"]
+
+[placement]
+mode = "smart"
+
+# Development D1 database
+[[d1_databases]]
+binding = "DB"
+database_name = "awcms-micro-dev-d1"
+database_id = "df3281e0-4066-4da8-8911-1a0ed60a4562"
+migrations_dir = "awcmsmicro-dev/packages/core/src/database/migrations"
+
+# Development R2 bucket for media storage
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "awcms-micro-dev-media"
+
+# Development KV namespace for sessions
+[[kv_namespaces]]
+binding = "SESSION"
+id = "7382419ae0194a10949290c9e69d0840"
+
+# Cloudflare Images binding
+[images]
+binding = "IMAGES"
+
+# Worker loaders
+[[worker_loaders]]
+binding = "LOADER"
+
+# Environment variables
+[vars]
+AWCMS_MICRO_SITE_URL = "https://awcms-micro-dev.ahlikoding.com"
+AWCMS_MICRO_STORAGE_PUBLIC_BASE_URL = "https://awcms-micro-dev-s3.ahlikoding.com"
+AWCMS_MICRO_GALLERY_MEDIA_STORAGE = "r2"
+AWCMS_MICRO_GALLERY_CLOUDFLARE_IMAGES = "optional"
+AWCMS_MICRO_GALLERY_CLOUDFLARE_STREAM = "optional"
+
+# Observability
+[observability]
+enabled = true
+
+# Development settings
+[dev]
+port = 8787
+local_protocol = "http"
