@@ -1,13 +1,16 @@
 # AWCMS-Micro Changelog
 
+## 0.1.1 - 2026-06-13
+
+- Introduces a canonical root `.env` using the `ss_kobar_` namespace, adds sync automation for local Cloudflare development values, and updates root documentation for the new environment-management workflow.
 ## 0.1.0 - 2026-05-28
 
 - Introduces the root-level AWCMS-Micro versioning and changelog system for maintenance-workspace changes.
 
-## Workspace Snapshot - 2026-05-29
+## Workspace Snapshot - 2026-06-13
 
-- EmDash upstream: `19c580240158747733b30c5f04a45bdf4df73518` from `emdash-latest/`
-- Root version: `0.1.0`
+- EmDash upstream: `4075652a360e51cd1597e2b595df75a6a1c05e7a` from `emdash-latest/`
+- Root version: `0.1.1`
 
 ### Plugins
 

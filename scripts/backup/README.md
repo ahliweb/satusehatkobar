@@ -20,6 +20,12 @@ npm install -g wrangler
 
 All backup settings live in one encrypted file: `scripts/backup/.backup-config.age`
 
+The root `.env` file is now the canonical local operator config for the workspace. Use the `ss_kobar_` namespace there, then sync local runtime outputs with:
+
+```bash
+bash scripts/sync-ss-kobar-env.sh
+```
+
 ```bash
 # Create config from template
 cp scripts/backup/.backup-config.example scripts/backup/.backup-config
@@ -36,6 +42,7 @@ shred -u scripts/backup/.backup-config
 
 The encrypted `.backup-config.age` is safe to commit to **private** repositories.
 The loader also normalizes legacy GitLab SSH URLs to the current PAT-based HTTPS mirror when `GITLAB_PAT`, `GITLAB_USERNAME`, and `GITLAB_REPO_NAME` are available.
+It also maps canonical `ss_kobar_` values from the root `.env` into the legacy uppercase names still used by backup scripts.
 
 ### 3. Using the Config
 
@@ -200,6 +207,15 @@ Set these as repository variables (not secrets) so workflows can stay aligned wi
 | `GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE` | `@awcms-micro/template-default-cloudflare` |
 
 ## Security Model
+
+```mermaid
+flowchart TD
+    A[root .env\nss_kobar_*] --> B[sync-ss-kobar-env.sh]
+    A --> C[load-config.sh]
+    B --> D[.dev.vars]
+    C --> E[backup and recovery scripts]
+    C --> F[GitHub and GitLab operator flows]
+```
 
 ```
 Unencrypted (NEVER commit)          Encrypted (SAFE to commit in private repo)

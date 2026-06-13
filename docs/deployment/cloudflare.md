@@ -8,6 +8,17 @@ This runbook applies to AWCMS-Micro example deployments built from plugin and te
 
 ## Example Production Shape
 
+```mermaid
+flowchart LR
+    U[Users] --> W[Cloudflare Worker app]
+    W --> D[D1 database]
+    W --> R[R2 media bucket]
+    W --> K[KV session namespace]
+    W --> I[Cloudflare Images binding]
+    O[Operator root .env\nss_kobar_*] --> G[GitHub and local wrangler setup]
+    G --> W
+```
+
 - Base domain: `awcms-micro.ahlikoding.com`
 - Storage domain: `awcms-micro-s3.ahlikoding.com`
 - D1 database name: `awcms-micro-d1`
@@ -54,6 +65,8 @@ Do not commit tokens, secrets, or private credentials. This repository's referen
 ## Secrets And Variables
 
 Keep real values in Cloudflare secrets, CI secrets, or local operator environment files.
+
+For this repository, the canonical local source is the root `.env` file using the `ss_kobar_` namespace. Mirror the production-facing values into GitHub secrets and variables before deployment.
 
 Suggested categories:
 

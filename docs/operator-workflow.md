@@ -6,14 +6,25 @@ This document gives operators one concise end-to-end workflow for maintaining th
 
 ## Workflow Summary
 
+```mermaid
+flowchart TD
+    A[Refresh emdash-latest] --> B[Rebuild awcmsmicro-dev]
+    B --> C[Validate boundaries and workspace]
+    C --> D[Implement approved downstream work]
+    D --> E[Sync root environment outputs]
+    E --> F[Re-run targeted validation]
+    F --> G[Update docs, versioning, and release notes]
+```
+
 1. Refresh upstream EmDash into `emdash-latest/`.
 2. Rebuild `awcmsmicro-dev/` from `emdash-latest/`.
 3. Validate the rebuilt workspace.
 4. Implement AWCMS-Micro work only in approved plugin and template boundaries.
-5. Prepare AWCMS release-note inputs when plugin or template versions should change, keep `awcmsmicro-dev/.changeset/` preserved for workspace packages like `@emdash-cms/admin`, and update the root workspace snapshot when the plugin/template inventory changes.
-6. Re-run targeted validation.
-7. Update governance docs if boundaries, workflow, deployment, or security rules changed.
-8. Check promotion and release-readiness artifacts when preparing an independent repository state.
+5. Sync derived environment files from the canonical root `.env`.
+6. Prepare AWCMS release-note inputs when plugin or template versions should change, keep `awcmsmicro-dev/.changeset/` preserved for workspace packages like `@emdash-cms/admin`, and update the root workspace snapshot when the plugin/template inventory changes.
+7. Re-run targeted validation.
+8. Update governance docs if boundaries, workflow, deployment, or security rules changed.
+9. Check promotion and release-readiness artifacts when preparing an independent repository state.
 
 ## Standard Commands
 
@@ -51,6 +62,12 @@ bash scripts/awcms-root-versioning.sh status
 node awcmsmicro-dev/.github/scripts/awcms-version.mjs status
 ```
 
+### 6. Sync Root Environment Outputs
+
+```bash
+bash scripts/sync-ss-kobar-env.sh
+```
+
 ## Decision Rules During Work
 
 - If the change is upstream EmDash, keep it in `emdash-latest/` only.
@@ -83,6 +100,7 @@ When preparing the independent `awcms-micro` repository state:
 - `docs/upstream-sync/DIVERGENCE_LOG.md`
 - `docs/upstream-sync/COMPATIBILITY_MATRIX.md`
 - `docs/deployment/cloudflare.md`
+- `docs/environment-configuration.md`
 - `docs/security/security-baseline.md`
 
 ## Operating Principle

@@ -2,12 +2,22 @@
 
 ## Baseline
 
+```mermaid
+flowchart LR
+    A[root .env and encrypted backup config] --> B[load-config.sh compatibility layer]
+    B --> C[backup scripts and GitHub workflows]
+    C --> D[D1 export]
+    C --> E[R2 encrypted backup objects]
+    C --> F[GitLab mirror]
+```
+
 - D1 backups run daily at 2 AM UTC via `.github/workflows/backup-automated.yml`
 - Additional backups trigger automatically on push with database migration changes via `.github/workflows/backup-on-db-changes.yml`
 - R2 objects in `awcms-micro-media` are protected; backup copies stored in `awcms-micro-backups`
 - Backups encrypted with AES-256-CBC (passphrase stored in GitHub Secrets `BACKUP_PASSPHRASE`)
 - Backup retention: 7 most recent backups kept in R2
 - Mirror/recovery config in encrypted backup files; local `.env` overlay via `scripts/backup/load-config.sh`
+- Canonical root environment values use the `ss_kobar_` prefix and are translated for legacy backup scripts by `scripts/backup/load-config.sh`
 - PAT-based GitLab mirror flow for code backup and recovery
 
 ## Backup Schedule
