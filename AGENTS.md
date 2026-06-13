@@ -1,8 +1,11 @@
+# AGENTS
+
 This repository is a parent maintenance workspace for AWCMS-Micro and EmDash alignment.
 
 ## Root Layout
 
-- `emdash-latest/`: latest synchronized EmDash source tree
+- `emdash-latest/`: latest synchronized EmDash source tree (upstream reference, read-only)
+- `awcms-latest/`: latest synchronized AWCMS-Micro source tree from `ahliweb/awcms-micro` (upstream reference, read-only)
 - `awcmsmicro-dev/`: managed clone of `emdash-latest/` used for AWCMS-Micro development
 - `docs/`: parent-repository technical documentation
 - `scripts/`: root maintenance scripts

@@ -2,12 +2,32 @@
 
 ## Overview
 
-The root repository is a parent maintenance layer with four primary folders:
+The root repository is a parent maintenance layer with five primary folders:
 
-- `emdash-latest/`
-- `awcmsmicro-dev/`
-- `docs/`
-- `scripts/`
+- `emdash-latest/` — upstream EmDash reference snapshot
+- `awcms-latest/` — upstream AWCMS-Micro reference snapshot
+- `awcmsmicro-dev/` — AWCMS-Micro development workspace
+- `docs/` — root documentation
+- `scripts/` — synchronization and maintenance scripts
+
+```mermaid
+graph TD
+    UP_EM["github.com/emdash-cms/emdash"] -->|update-emdash-latest.sh| EL["emdash-latest/\n(upstream reference)"]
+    UP_AW["github.com/ahliweb/awcms-micro"] -->|update-awcms-latest.sh| AL["awcms-latest/\n(upstream reference)"]
+    EL -->|update-awcmsmicro-dev.sh\n+ protected paths| DEV["awcmsmicro-dev/\n(development workspace)"]
+    DEV -->|push| GHAW["github.com/ahliweb/satusehatkobar\n(this repo)"]
+
+    subgraph Protected
+        P1["templates/awcms-micro-default"]
+        P2["templates/awcms-sskobar-cloudflare"]
+        P3["packages/plugins/awcms-micro-sikesra"]
+        P4["packages/plugins/awcms-micro-gallery"]
+        P5[".github/workflows"]
+        P6[".awcms-changesets"]
+    end
+
+    DEV --- Protected
+```
 
 ## Folder Responsibilities
 
@@ -20,6 +40,16 @@ Rules:
 - Keep it as close to upstream EmDash as possible.
 - Use it as the comparison baseline for synchronization work.
 - Do not place AWCMS-Micro-specific customization here unless the task is explicitly about analyzing upstream differences.
+
+### `awcms-latest/`
+
+Contains the latest snapshot of the upstream `https://github.com/ahliweb/awcms-micro` workspace. This provides a reference point for comparing what is in the upstream AWCMS-Micro repository versus what is in this working repository.
+
+Rules:
+
+- Treat it as a read-only reference. Do not edit it directly.
+- Use it to check alignment between this working repository and the upstream AWCMS-Micro workspace.
+- Updated by `bash scripts/update-awcms-latest.sh`.
 
 ### `awcmsmicro-dev/`
 
@@ -50,12 +80,17 @@ Documents in this folder define:
 
 Contains update and synchronization scripts.
 
-Expected root scripts:
-
-- a script to update `emdash-latest/` from upstream EmDash
-- a script to rebuild `awcmsmicro-dev/` from `emdash-latest/`
-- a script to validate `awcmsmicro-dev/` after sync
-- a script to run sync and validation together
+| Script | Purpose |
+| --- | --- |
+| `update-emdash-latest.sh` | Clone latest EmDash into `emdash-latest/` |
+| `update-awcms-latest.sh` | Clone latest `ahliweb/awcms-micro` into `awcms-latest/` |
+| `update-awcmsmicro-dev.sh` | Rebuild `awcmsmicro-dev/` from `emdash-latest/` preserving protected paths |
+| `sync-and-validate-awcmsmicro-dev.sh` | Combined: update both refs, rebuild, sync env, validate |
+| `validate-awcmsmicro-dev.sh` | Run install, typecheck, lint, test, build in `awcmsmicro-dev/` |
+| `validate-awcmsmicro-boundaries.sh` | Verify protected paths list consistency |
+| `validate-sskobar-config.sh` | Validate canonical config for this workspace |
+| `sync-sskobar-env.sh` | Propagate root `.env` to derived config locations |
+| `backup/backup-db.sh` | Backup D1/R2/Postgres/SQLite databases |
 
 ## AWCMS-Micro Example Locations
 
@@ -105,8 +140,9 @@ English (US) is the official language for root-level repository documentation, i
 Exceptions:
 
 - `emdash-latest/` preserves upstream EmDash wording as-is
+- `awcms-latest/` preserves upstream AWCMS-Micro wording as-is
 - `awcmsmicro-dev/` may inherit upstream wording when synchronized from `emdash-latest/`
 
 ## Design Principle
 
-The root repository is not a runtime host. It is a maintenance, synchronization, and documentation layer. Product behavior belongs in `awcmsmicro-dev/`, while `emdash-latest/` remains the clean upstream reference used for refresh, comparison, and validation.
+The root repository is not a runtime host. It is a maintenance, synchronization, and documentation layer. Product behavior belongs in `awcmsmicro-dev/`, while `emdash-latest/` and `awcms-latest/` remain clean upstream references used for refresh, comparison, and validation.

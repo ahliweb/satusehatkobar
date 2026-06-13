@@ -1,6 +1,6 @@
 # Approved AWCMS-Micro implementation paths preserved across awcmsmicro-dev rebuilds.
 templates/awcms-micro-default
-templates/awcms-micro-default-cloudflare
+templates/awcms-sskobar-cloudflare
 packages/plugins/awcms-micro-sikesra
 packages/plugins/awcms-micro-gallery
 demos/awcms-micro-cloudflare

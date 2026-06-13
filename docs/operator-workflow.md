@@ -8,23 +8,28 @@ This document gives operators one concise end-to-end workflow for maintaining th
 
 ```mermaid
 flowchart TD
-    A[Refresh emdash-latest] --> B[Rebuild awcmsmicro-dev]
-    B --> C[Validate boundaries and workspace]
-    C --> D[Implement approved downstream work]
-    D --> E[Sync root environment outputs]
-    E --> F[Re-run targeted validation]
-    F --> G[Update docs, versioning, and release notes]
+    A[Backup D1 database] --> B[Refresh emdash-latest]
+    B --> B2[Refresh awcms-latest]
+    B2 --> C[Rebuild awcmsmicro-dev]
+    C --> D[Validate boundaries and workspace]
+    D --> E[Implement approved downstream work]
+    E --> F[Sync root environment outputs]
+    F --> G[Re-run targeted validation]
+    G --> H[Update docs, versioning, and release notes]
+    H --> I[Commit and push to GitHub]
 ```
 
-1. Refresh upstream EmDash into `emdash-latest/`.
-2. Rebuild `awcmsmicro-dev/` from `emdash-latest/`.
-3. Validate the rebuilt workspace.
-4. Implement AWCMS-Micro work only in approved plugin and template boundaries.
-5. Sync derived environment and deployment files from the canonical root `.env`.
-6. Prepare AWCMS release-note inputs when plugin or template versions should change, keep `awcmsmicro-dev/.changeset/` preserved for workspace packages like `@emdash-cms/admin`, and update the root workspace snapshot when the plugin/template inventory changes.
-7. Re-run targeted validation.
-8. Update governance docs if boundaries, workflow, deployment, or security rules changed.
-9. Check promotion and release-readiness artifacts when preparing an independent repository state.
+1. Backup the production D1 database.
+2. Refresh upstream EmDash into `emdash-latest/`.
+3. Refresh upstream AWCMS-Micro into `awcms-latest/`.
+4. Rebuild `awcmsmicro-dev/` from `emdash-latest/`.
+5. Validate the rebuilt workspace.
+6. Implement AWCMS-Micro work only in approved plugin and template boundaries.
+7. Sync derived environment and deployment files from the canonical root `.env`.
+8. Prepare AWCMS release-note inputs when plugin or template versions should change, keep `awcmsmicro-dev/.changeset/` preserved for workspace packages like `@emdash-cms/admin`, and update the root workspace snapshot when the plugin/template inventory changes.
+9. Re-run targeted validation.
+10. Update governance docs if boundaries, workflow, deployment, or security rules changed.
+11. Check promotion and release-readiness artifacts when preparing an independent repository state.
 
 ## Standard Commands
 

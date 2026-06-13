@@ -52,6 +52,22 @@ This keeps AWCMS-Micro aligned with EmDash rather than turning `awcmsmicro-dev/`
 
 No arbitrary unknown paths are preserved.
 
+```mermaid
+sequenceDiagram
+    participant S as update-awcmsmicro-dev.sh
+    participant B as Backup (temp dir)
+    participant D as awcmsmicro-dev/
+    participant E as emdash-latest/
+
+    S->>D: Read protected-paths.txt
+    S->>B: Backup each approved custom path
+    S->>D: rsync --delete from emdash-latest/ (upstream core)
+    Note over D: All non-protected paths<br/>are now from EmDash
+    S->>B: Restore each approved custom path
+    Note over D: AWCMS-Micro paths preserved,<br/>upstream core refreshed
+    S->>D: Prune stale transient-only dirs
+```
+
 ## Compatibility Guardrail
 
 This boundary preserves EmDash compatibility by keeping upstream behavior in upstream-owned locations and confining AWCMS-Micro example work to explicitly approved paths.

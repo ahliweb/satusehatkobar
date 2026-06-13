@@ -5,18 +5,44 @@
 Keep AWCMS-Micro aligned with the latest EmDash source while preserving a strict separation between:
 
 - the upstream reference tree in `emdash-latest/`
+- the upstream AWCMS-Micro reference snapshot in `awcms-latest/`
 - the AWCMS-Micro development workspace in `awcmsmicro-dev/`
+
+## Workflow Overview
+
+```mermaid
+flowchart TD
+    A([Start sync]) --> B[Verify GitHub is current\ngit push if needed]
+    B --> C[Backup production D1\nscripts/backup/backup-db.sh]
+    C --> D[Update emdash-latest\nupdate-emdash-latest.sh]
+    D --> E[Update awcms-latest\nupdate-awcms-latest.sh]
+    E --> F[Analyze EmDash delta\nnew packages, migrations, API changes]
+    F --> G{Significant\narchitectural change?}
+    G -->|Yes| H[Create GitHub issues\nfor tracked implementation]
+    G -->|No| I[Rebuild awcmsmicro-dev\nupdate-awcmsmicro-dev.sh]
+    H --> I
+    I --> J[Sync env overlay\nsync-sskobar-env.sh]
+    J --> K[Validate config\nvalidate-sskobar-config.sh]
+    K --> L[Validate workspace\nvalidate-awcmsmicro-dev.sh]
+    L --> M{Validation\npassed?}
+    M -->|No| N[Fix issues in\nawcmsmicro-dev/]
+    N --> L
+    M -->|Yes| O[Update docs, README,\nCHANGELOG, VERSION]
+    O --> P[Commit and push\nto GitHub]
+    P --> Q([Done])
+```
 
 ## Standard Sequence
 
 1. Analyze upstream EmDash changes.
 2. Refresh `emdash-latest/` from upstream.
-3. Rebuild `awcmsmicro-dev/` from `emdash-latest/`.
-4. Validate `awcmsmicro-dev/` with `bash scripts/validate-awcmsmicro-dev.sh`.
-5. Continue AWCMS-Micro-specific implementation work only inside the approved protected paths in `awcmsmicro-dev/`.
-6. Keep new product development in plugin and template boundaries; use docs, demos, and E2E paths only as supporting surfaces.
-7. Update root documentation if process, structure, or rules changed.
-8. Update the root workspace snapshot in `CHANGELOG.md` when the EmDash upstream SHA or the plugin/template inventory changes.
+3. Refresh `awcms-latest/` from `ahliweb/awcms-micro`.
+4. Rebuild `awcmsmicro-dev/` from `emdash-latest/`.
+5. Validate `awcmsmicro-dev/` with `bash scripts/validate-awcmsmicro-dev.sh`.
+6. Continue AWCMS-Micro-specific implementation work only inside the approved protected paths in `awcmsmicro-dev/`.
+7. Keep new product development in plugin and template boundaries; use docs, demos, and E2E paths only as supporting surfaces.
+8. Update root documentation if process, structure, or rules changed.
+9. Update the root workspace snapshot in `CHANGELOG.md` when the EmDash upstream SHA or the plugin/template inventory changes.
 
 ## Refresh `emdash-latest/`
 
@@ -31,6 +57,22 @@ Result:
 - clones the latest `https://github.com/emdash-cms/emdash`
 - replaces the contents of `emdash-latest/`
 - excludes upstream `.git` metadata from the copied tree
+- writes the EmDash SHA and fetch timestamp to `docs/upstream-sync/LAST_UPSTREAM_FETCH.md`
+
+## Refresh `awcms-latest/`
+
+Run:
+
+```bash
+bash scripts/update-awcms-latest.sh
+```
+
+Result:
+
+- clones the latest `https://github.com/ahliweb/awcms-micro`
+- replaces the contents of `awcms-latest/`
+- excludes `.git`, `node_modules`, `dist`, `.astro`, `.wrangler` from the copy
+- writes the AWCMS-Micro SHA and fetch timestamp to `docs/upstream-sync/LAST_AWCMS_MICRO_FETCH.md`
 
 ## Rebuild `awcmsmicro-dev/`
 
@@ -57,6 +99,28 @@ Only those listed paths are backed up and restored during `bash scripts/update-a
 
 Run `bash scripts/validate-awcmsmicro-boundaries.sh` after boundary or allowlist changes.
 
+```mermaid
+graph LR
+    subgraph awcmsmicro-dev
+        T1["templates/awcms-micro-default"]
+        T2["templates/awcms-sskobar-cloudflare"]
+        P1["packages/plugins/awcms-micro-sikesra"]
+        P2["packages/plugins/awcms-micro-gallery"]
+        D1["demos/awcms-micro-cloudflare"]
+        DC1["docs/awcms-micro"]
+        DC2["docs/gallery"]
+        E1["e2e/awcms-micro"]
+        CS1[".awcms-changesets"]
+        CS2[".changeset"]
+        GH1[".github/workflows"]
+        GH2[".github/scripts"]
+        GH3[".github/dependabot.yml"]
+    end
+
+    SYNC["update-awcmsmicro-dev.sh"] -->|backs up before rsync| T1 & T2 & P1 & P2 & D1 & DC1 & DC2 & E1 & CS1 & CS2 & GH1 & GH2 & GH3
+    SYNC -->|restores after rsync| T1 & T2 & P1 & P2 & D1 & DC1 & DC2 & E1 & CS1 & CS2 & GH1 & GH2 & GH3
+```
+
 ## Validate `awcmsmicro-dev/`
 
 Run:
@@ -79,11 +143,20 @@ Run:
 bash scripts/sync-and-validate-awcmsmicro-dev.sh
 ```
 
-This wrapper refreshes `emdash-latest/`, rebuilds `awcmsmicro-dev/`, runs validation, and updates `docs/upstream-sync/UPSTREAM_SYNC_STATUS.md`.
+This wrapper:
+
+1. Refreshes `emdash-latest/` from upstream EmDash
+2. Refreshes `awcms-latest/` from `ahliweb/awcms-micro`
+3. Rebuilds `awcmsmicro-dev/` from `emdash-latest/`
+4. Runs `sync-sskobar-env.sh`
+5. Validates with `validate-sskobar-config.sh`
+6. Validates with `validate-awcmsmicro-dev.sh`
+7. Updates `docs/upstream-sync/UPSTREAM_SYNC_STATUS.md`
 
 ## Operating Rules
 
 - Treat `emdash-latest/` as disposable and reproducible from upstream.
+- Treat `awcms-latest/` as disposable and reproducible from upstream.
 - Treat `awcmsmicro-dev/` as the only place for AWCMS-Micro implementation work inside this parent repository.
 - Keep AWCMS-Micro-owned divergence limited to the approved protected paths rather than editing upstream core locations.
 - Keep new product behavior in plugins and templates instead of introducing a parallel shared core implementation layer.

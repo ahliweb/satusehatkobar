@@ -31,6 +31,9 @@ export {
 	type TranslationsResponse,
 	getDraftStatus,
 	fetchContentList,
+	fetchContentAuthors,
+	type ContentAuthor,
+	type ContentDateField,
 	fetchContent,
 	fetchTranslations,
 	createContent,
@@ -58,6 +61,7 @@ export {
 	type MediaProviderCapabilities,
 	type MediaProviderInfo,
 	type MediaProviderItem,
+	MEDIA_SEARCH_MAX_LENGTH,
 	fetchMediaList,
 	uploadMedia,
 	deleteMedia,
@@ -143,6 +147,7 @@ export {
 	type BylineInput,
 	type BylineTranslationInput,
 	type BylineCreditInput,
+	type BylineCustomFieldValue,
 	fetchBylines,
 	fetchByline,
 	createByline,
@@ -151,6 +156,22 @@ export {
 	fetchBylineTranslations,
 	createBylineTranslation,
 } from "./bylines.js";
+
+// Byline custom-field schema (Discussion #1174)
+export {
+	type BylineFieldType,
+	type BylineFieldValidation,
+	type BylineFieldDefinition,
+	type BylineFieldUsage,
+	type CreateBylineFieldInput,
+	type UpdateBylineFieldInput,
+	listBylineFields,
+	getBylineFieldUsage,
+	createBylineField,
+	updateBylineField,
+	deleteBylineField,
+	reorderBylineFields,
+} from "./byline-fields.js";
 
 // Menus
 export {
