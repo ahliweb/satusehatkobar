@@ -70,9 +70,11 @@ bash scripts/update-awcms-latest.sh
 Result:
 
 - clones the latest `https://github.com/ahliweb/awcms-micro`
-- replaces the contents of `awcms-latest/`
-- excludes `.git`, `node_modules`, `dist`, `.astro`, `.wrangler` from the copy
+- replaces the contents of `awcms-latest/` with **root-level governance files and unique configs only**
+- excludes large subdirectories that already exist in the repo root: `awcmsmicro-dev/`, `emdash-latest/`, `docs/`, `scripts/`
+- excludes `.git`, `node_modules`, `dist`, `.astro`, `.wrangler`, and binary archives
 - writes the AWCMS-Micro SHA and fetch timestamp to `docs/upstream-sync/LAST_AWCMS_MICRO_FETCH.md`
+- keeps `awcms-latest/` at ~250KB (down from the original ~100MB full clone)
 
 ## Rebuild `awcmsmicro-dev/`
 

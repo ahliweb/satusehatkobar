@@ -20,7 +20,7 @@
 
 ## Status Summary
 
-Synced to EmDash `34dd430b`. `emdash-latest/` and `awcmsmicro-dev/` both refreshed successfully. `awcms-latest/` updated from `ahliweb/awcms-micro` for the first time. EmDash jumped from v0.15.0 → v0.19.0 with three new migrations (041–043) and two significant new systems: byline custom fields and content references. Protected paths fix: renamed `templates/awcms-micro-default-cloudflare` → `templates/awcms-sskobar-cloudflare` in `awcmsmicro-dev-protected-paths.txt` to match the current template name.
+Synced to EmDash `34dd430b`. `emdash-latest/`, `awcmsmicro-dev/`, and `awcms-latest/` all refreshed. Local dev environment synced (`pnpm install`, full typecheck passed across all 61 workspace packages). `awcms-latest/` cleaned from ~100MB to ~250KB by removing redundant subdirs (`awcmsmicro-dev/`, `emdash-latest/`, `docs/`, `scripts/`) that already exist at the repo root. Protected paths fix: renamed `templates/awcms-micro-default-cloudflare` → `templates/awcms-sskobar-cloudflare` in `awcmsmicro-dev-protected-paths.txt`.
 
 ## Key Changes in This Sync
 
@@ -39,6 +39,10 @@ Synced to EmDash `34dd430b`. `emdash-latest/` and `awcmsmicro-dev/` both refresh
 - Fixed protected paths: `templates/awcms-micro-default-cloudflare` → `templates/awcms-sskobar-cloudflare`
 - `scripts/sync-and-validate-awcmsmicro-dev.sh` now also runs `update-awcms-latest.sh`
 - GitHub issues created: #4 (D1 backup), #5 (migrations), #6 (byline fields), #7 (content references), #8 (@atcute v2), #9 (.env migration)
+- Cleaned `awcms-latest/` from ~100MB to ~250KB: removed `awcmsmicro-dev/`, `emdash-latest/`, `docs/`, `scripts/`, `age-v1.2.0-linux-amd64.tar.gz`
+- Updated `scripts/update-awcms-latest.sh` to exclude large redundant subdirs on future syncs
+- Local dev environment synced: `pnpm install`, `pnpm build` (registry-client, emdash core), `pnpm typecheck` — all 61 workspace packages pass
+- Lockfile updated: new packages `pkg-pr-new 0.0.75`; bumps for `@changesets/cli 2.31.0`, `@playwright/test 1.60.0`, `oxfmt 0.54.0`, `oxlint 1.69.0`, `prettier 3.8.3`
 
 ## Validation Status
 
@@ -46,9 +50,12 @@ Synced to EmDash `34dd430b`. `emdash-latest/` and `awcmsmicro-dev/` both refresh
 | --- | --- | --- |
 | Upstream fetch into `emdash-latest/` | Passed | SHA `34dd430b` from EmDash `main` |
 | Upstream fetch into `awcms-latest/` | Passed | SHA `279126bf` from `ahliweb/awcms-micro` `main` |
+| `awcms-latest/` cleanup | Passed | Reduced from ~100MB to ~250KB; redundant subdirs removed |
 | Rebuild `awcmsmicro-dev/` from `emdash-latest/` | Passed | Protected paths restored; 1537 stale transient dirs pruned |
 | Protected path fix: `awcms-sskobar-cloudflare` | Passed | Restored from git HEAD after protected-paths correction |
-| Validation script execution | Pending | Run `bash scripts/validate-awcmsmicro-dev.sh` to update |
+| `pnpm install` in `awcmsmicro-dev/` | Passed | Lockfile updated; all deps resolved |
+| Typecheck all 61 workspace packages | Passed | Required build: registry-client, emdash core; then all pass |
+| Full validation script | Pending | Run `bash scripts/validate-awcmsmicro-dev.sh` to update |
 
 ## Open Actions
 

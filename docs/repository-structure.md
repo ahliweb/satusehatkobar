@@ -12,12 +12,12 @@ The root repository is a parent maintenance layer with five primary folders:
 
 ```mermaid
 graph TD
-    UP_EM["github.com/emdash-cms/emdash"] -->|update-emdash-latest.sh| EL["emdash-latest/\n(upstream reference)"]
-    UP_AW["github.com/ahliweb/awcms-micro"] -->|update-awcms-latest.sh| AL["awcms-latest/\n(upstream reference)"]
+    UP_EM["github.com/emdash-cms/emdash"] -->|update-emdash-latest.sh| EL["emdash-latest/\n(full upstream snapshot)"]
+    UP_AW["github.com/ahliweb/awcms-micro"] -->|update-awcms-latest.sh\nexcludes: awcmsmicro-dev\nemdash-latest, docs, scripts| AL["awcms-latest/\n(governance files only\n~250KB)"]
     EL -->|update-awcmsmicro-dev.sh\n+ protected paths| DEV["awcmsmicro-dev/\n(development workspace)"]
     DEV -->|push| GHAW["github.com/ahliweb/satusehatkobar\n(this repo)"]
 
-    subgraph Protected
+    subgraph Protected["Protected paths in awcmsmicro-dev/"]
         P1["templates/awcms-micro-default"]
         P2["templates/awcms-sskobar-cloudflare"]
         P3["packages/plugins/awcms-micro-sikesra"]
@@ -43,13 +43,16 @@ Rules:
 
 ### `awcms-latest/`
 
-Contains the latest snapshot of the upstream `https://github.com/ahliweb/awcms-micro` workspace. This provides a reference point for comparing what is in the upstream AWCMS-Micro repository versus what is in this working repository.
+Contains a **lightweight reference snapshot** of the root-level governance files and unique upstream configs from `https://github.com/ahliweb/awcms-micro`. This provides a reference point for comparing upstream governance (AGENTS.md, README.md, CHANGELOG.md, .github workflows, .opencode skills) against the working repository.
+
+Large subdirectories that already exist in the repo root (`awcmsmicro-dev/`, `emdash-latest/`, `docs/`, `scripts/`) and binary archives are intentionally excluded from this snapshot to avoid redundant duplication and excessive repository size growth.
 
 Rules:
 
 - Treat it as a read-only reference. Do not edit it directly.
-- Use it to check alignment between this working repository and the upstream AWCMS-Micro workspace.
+- Use it to check alignment between upstream governance files and the working repository's root.
 - Updated by `bash scripts/update-awcms-latest.sh`.
+- Does not contain `awcmsmicro-dev/`, `emdash-latest/`, `docs/`, `scripts/` — those are at the repo root and are authoritative.
 
 ### `awcmsmicro-dev/`
 

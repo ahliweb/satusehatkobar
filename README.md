@@ -15,7 +15,7 @@ AWCMS-Micro-specific product development in this maintenance workspace is limite
 ```mermaid
 graph TD
     UP_EM["github.com/emdash-cms/emdash"] -->|update-emdash-latest.sh| EL["emdash-latest/\n(EmDash upstream reference)"]
-    UP_AW["github.com/ahliweb/awcms-micro"] -->|update-awcms-latest.sh| AL["awcms-latest/\n(AWCMS-Micro upstream reference)"]
+    UP_AW["github.com/ahliweb/awcms-micro"] -->|update-awcms-latest.sh\nexcludes: awcmsmicro-dev\nemdash-latest, docs, scripts| AL["awcms-latest/\n(governance files only\n~250KB)"]
     EL -->|update-awcmsmicro-dev.sh\n+ protected paths| DEV["awcmsmicro-dev/\n(development workspace)"]
     DEV -->|push| THIS["github.com/ahliweb/satusehatkobar\n(this repo)"]
 
@@ -32,7 +32,7 @@ graph TD
 | Folder | Purpose |
 | --- | --- |
 | `emdash-latest/` | Latest synchronized snapshot of upstream EmDash |
-| `awcms-latest/` | Latest synchronized snapshot of upstream `ahliweb/awcms-micro` |
+| `awcms-latest/` | Lightweight reference snapshot of upstream `ahliweb/awcms-micro` (governance files and unique configs only, ~250KB; large subdirs excluded) |
 | `awcmsmicro-dev/` | Clone of `emdash-latest/` used as the active AWCMS-Micro development workspace |
 | `docs/` | Root-level technical documentation for structure, sync workflow, and implementation rules |
 | `scripts/` | Maintenance scripts for refreshing upstream snapshots and rebuilding `awcmsmicro-dev/` |
@@ -81,7 +81,7 @@ flowchart LR
 ## Repository Rules
 
 - Keep `emdash-latest/` as the clean upstream EmDash reference tree.
-- Keep `awcms-latest/` as the clean upstream AWCMS-Micro reference tree.
+- Keep `awcms-latest/` as a lightweight upstream governance reference (root-level files and unique configs only; `awcmsmicro-dev/`, `emdash-latest/`, `docs/`, `scripts/` are intentionally excluded to prevent redundant duplication).
 - Rebuild `awcmsmicro-dev/` from `emdash-latest/` before AWCMS-Micro-specific implementation work.
 - Do not treat this repository as a runtime host for nested products.
 - Keep root documentation synchronized with the actual workflow and folder layout.

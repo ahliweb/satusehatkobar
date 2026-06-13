@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+# Syncs awcms-latest/ with the root-level governance files and unique configs from
+# ahliweb/awcms-micro. Large subdirectories that already exist in the repo root
+# (awcmsmicro-dev/, emdash-latest/, docs/, scripts/) are excluded to prevent
+# redundant duplication and excessive repository size growth.
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 TARGET_DIR="$ROOT_DIR/awcms-latest"
@@ -34,6 +39,14 @@ rsync -a \
 	--exclude='dist' \
 	--exclude='.astro' \
 	--exclude='.wrangler' \
+	--exclude='awcmsmicro-dev' \
+	--exclude='emdash-latest' \
+	--exclude='docs' \
+	--exclude='scripts' \
+	--exclude='*.tar.gz' \
+	--exclude='*.tar.xz' \
+	--exclude='*.tar.bz2' \
+	--exclude='*.zip' \
 	"$SOURCE_DIR/" "$TARGET_DIR/"
 
 cat >"$METADATA_FILE" <<EOF
@@ -47,9 +60,21 @@ cat >"$METADATA_FILE" <<EOF
 - Fetch date: $FETCHED_AT
 - Target folder: awcms-latest/
 
+## Excluded Paths
+
+The following are excluded from awcms-latest/ because equivalent content already exists in the repo root:
+
+- awcmsmicro-dev/ (root awcmsmicro-dev/ is authoritative)
+- emdash-latest/ (root emdash-latest/ is authoritative)
+- docs/ (root docs/ is authoritative)
+- scripts/ (root scripts/ is authoritative)
+- Binary archives (*.tar.gz, *.tar.xz, *.tar.bz2, *.zip)
+
 ## Notes
 
 This file records the exact upstream AWCMS-Micro revision copied into awcms-latest/.
+awcms-latest/ contains only root-level governance files and unique upstream configs.
 EOF
 
 echo "awcms-latest has been refreshed from upstream AWCMS-Micro ($REPO_BRANCH) at $UPSTREAM_SHA."
+echo "Excluded: awcmsmicro-dev/, emdash-latest/, docs/, scripts/, binary archives."

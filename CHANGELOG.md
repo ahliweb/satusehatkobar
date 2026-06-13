@@ -1,5 +1,14 @@
 # AWCMS-Micro Changelog
 
+## 0.1.9 - 2026-06-13
+
+- Removes redundant subdirectories from `awcms-latest/`: `awcmsmicro-dev/` (53MB), `emdash-latest/` (44MB), `docs/` (788KB), `scripts/` (164KB), and the `age-v1.2.0-linux-amd64.tar.gz` binary archive. Reduces `awcms-latest/` from ~102MB to ~252KB.
+- Updates `scripts/update-awcms-latest.sh` to permanently exclude those subdirectories and binary archives on future syncs, preventing re-bloat.
+- Updates `docs/upstream-sync/LAST_AWCMS_MICRO_FETCH.md` to document the exclusion policy.
+- Syncs local dev environment: `pnpm install` updated the lockfile, builds `@emdash-cms/registry-client` and `emdash` core to resolve new entry points, full `pnpm typecheck` passes across all 61 workspace packages.
+- Updates `docs/repository-structure.md`, `docs/synchronization-workflow.md`, `README.md` to document the slim `awcms-latest/` scope and the exclusion rationale.
+- Updates Mermaid diagrams in `docs/repository-structure.md` and `README.md` to show the exclusion annotations on `update-awcms-latest.sh`.
+
 ## 0.1.8 - 2026-06-13
 
 - Syncs EmDash upstream from `4075652a` to `34dd430b` (v0.15.0 → v0.19.0).
@@ -43,7 +52,7 @@
 
 - EmDash upstream: `34dd430b35032535a972e9ed718c0eacaeae2029` from `emdash-latest/`
 - AWCMS-Micro upstream: `279126bffd279d56b085de238cf2b845d5ffd586` from `awcms-latest/`
-- Root version: `0.1.8`
+- Root version: `0.1.9`
 
 ### Plugins
 
