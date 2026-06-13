@@ -166,10 +166,11 @@ See [scripts/backup/README.md](scripts/backup/README.md) for full documentation.
 
 1. Refresh `emdash-latest/` from upstream EmDash.
 2. Rebuild `awcmsmicro-dev/` from `emdash-latest/`.
-3. Validate `awcmsmicro-dev/` with `bash scripts/validate-awcmsmicro-dev.sh`.
-4. Implement AWCMS-Micro-specific product work only in approved plugin and template boundaries inside `awcmsmicro-dev/`.
-5. Prepare `.awcms-changesets/` entries when AWCMS plugins or templates need downstream version bumps.
-6. Sync derived environment files with `bash scripts/sync-sskobar-env.sh` whenever root `.env` changes.
-7. Update root documentation when structure or process changes.
+3. Sync env-derived config with `bash scripts/sync-sskobar-env.sh` and validate it with `bash scripts/validate-sskobar-config.sh`.
+4. Validate `awcmsmicro-dev/` with `bash scripts/validate-awcmsmicro-dev.sh`.
+5. Implement AWCMS-Micro-specific product work only in approved plugin and template boundaries inside `awcmsmicro-dev/`.
+6. Prepare `.awcms-changesets/` entries when AWCMS plugins or templates need downstream version bumps.
+7. Sync derived environment files with `bash scripts/sync-sskobar-env.sh` whenever root `.env` changes.
+8. Update root documentation when structure or process changes.
 
 During rebuilds, `bash scripts/update-awcmsmicro-dev.sh` preserves only the explicitly approved AWCMS-Micro paths listed in `scripts/awcmsmicro-dev-protected-paths.txt` and governed by `docs/awcms-micro-implementation-boundaries.md`, including `awcmsmicro-dev/.changeset/` for workspace package-release metadata.

@@ -1,5 +1,8 @@
 # AWCMS-Micro Changelog
 
+## 0.1.6 - 2026-06-13
+
+- Integrates the canonical `awcms-sskkobar` configuration validation into the main validation workflow and the combined sync-and-validate wrapper.
 ## 0.1.5 - 2026-06-13
 
 - Expands the root `.env` sync flow so it updates related deployment, workflow, template, and operator example files from a single source of truth.
@@ -22,7 +25,7 @@
 ## Workspace Snapshot - 2026-06-13
 
 - EmDash upstream: `4075652a360e51cd1597e2b595df75a6a1c05e7a` from `emdash-latest/`
-- Root version: `0.1.5`
+- Root version: `0.1.6`
 
 ### Plugins
 

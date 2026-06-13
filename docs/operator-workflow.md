@@ -46,6 +46,7 @@ This rebuild path also prunes stale directories that remain only because they co
 
 ```bash
 bash scripts/validate-awcmsmicro-boundaries.sh
+bash scripts/validate-sskobar-config.sh
 bash scripts/validate-awcmsmicro-dev.sh
 ```
 
@@ -54,6 +55,8 @@ bash scripts/validate-awcmsmicro-dev.sh
 ```bash
 bash scripts/sync-and-validate-awcmsmicro-dev.sh
 ```
+
+This combined path now refreshes env-derived config from the root `.env`, validates the canonical `awcms-sskkobar` configuration, and only then runs the workspace validation sequence.
 
 ### 5. Check AWCMS Versioning Status
 

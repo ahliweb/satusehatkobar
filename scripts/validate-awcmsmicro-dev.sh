@@ -71,16 +71,18 @@ write_report() {
 - Operator: $OPERATOR_NAME
 - Branch: \`$BRANCH_NAME\`
 - Upstream commit SHA: \`$UPSTREAM_SHA\`
-- Validation scope: \`awcmsmicro-dev\` workspace validation
+			- Validation scope: \`awcmsmicro-dev\` workspace validation
 
 ## Commands
 
 \`\`\`bash
-bash scripts/validate-awcmsmicro-dev.sh
-bash -n scripts/update-emdash-latest.sh
-bash -n scripts/update-awcmsmicro-dev.sh
-bash -n scripts/validate-awcmsmicro-dev.sh
-bash -n scripts/sync-and-validate-awcmsmicro-dev.sh
+			bash scripts/validate-sskobar-config.sh
+			bash scripts/validate-awcmsmicro-dev.sh
+			bash -n scripts/update-emdash-latest.sh
+			bash -n scripts/update-awcmsmicro-dev.sh
+			bash -n scripts/validate-sskobar-config.sh
+			bash -n scripts/validate-awcmsmicro-dev.sh
+			bash -n scripts/sync-and-validate-awcmsmicro-dev.sh
 \`\`\`
 
 ## Result Summary
@@ -158,6 +160,23 @@ run_step() {
 }
 
 finalize_report
+
+CURRENT_STEP="validate-sskobar-config"
+printf '$ %s\n' "bash $ROOT_DIR/scripts/validate-sskobar-config.sh" >>"$TMP_OUTPUT"
+echo "==> validate-sskobar-config" >>"$TMP_OUTPUT"
+
+set +e
+bash "$ROOT_DIR/scripts/validate-sskobar-config.sh" >>"$TMP_OUTPUT" 2>&1
+SSKOBAR_EXIT_CODE=$?
+set -e
+
+if [[ $SSKOBAR_EXIT_CODE -ne 0 ]]; then
+	STATUS="Failed"
+	FAILURE_CATEGORY="Script failure"
+	finalize_report
+	echo "Validation failed: $FAILURE_CATEGORY" >&2
+	exit "$SSKOBAR_EXIT_CODE"
+fi
 
 run_step "pnpm-install" "Dependency install failure" pnpm install
 run_step "pnpm-build-emdash" "AWCMS-Micro added file failure" pnpm --filter emdash build
