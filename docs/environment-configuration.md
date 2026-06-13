@@ -113,4 +113,4 @@ Treat the root `.env` as the only editable source of truth for root-managed oper
 
 - variable names remain standard, for example `CLOUDFLARE_WORKER_NAME`
 - remote resource values owned by this workspace should use the agreed `awcms-sskkobar` naming family where appropriate, for example `awcms-sskkobar-r2`
-- values that reference existing external systems you do not control, such as `git@github.com:ahliweb/awcms-micro.git`, should remain unchanged
+- values that reference existing external systems you do not control, such as `git@github.com:ahliweb/satusehatkobar.git`, should remain unchanged

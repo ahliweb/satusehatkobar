@@ -95,6 +95,8 @@ write_report() {
 | Category | Status | Details |
 | --- | --- | --- |
 | Script failure | $( [[ "$FAILURE_CATEGORY" == "Script failure" ]] && printf 'Failed' || printf 'Not triggered' ) | Validation wrapper or shell orchestration failure |
+| awcms-sskkobar config validation failure | $( [[ "$FAILURE_CATEGORY" == "awcms-sskkobar config validation failure" ]] && printf 'Failed' || printf 'Not triggered' ) | \
+`bash scripts/validate-sskobar-config.sh` failed before workspace validation |
 | Dependency install failure | $( [[ "$FAILURE_CATEGORY" == "Dependency install failure" ]] && printf 'Failed' || printf 'Not triggered' ) | \`pnpm install\` failed |
 | Upstream EmDash test failure | $( [[ "$FAILURE_CATEGORY" == "Upstream EmDash test failure" ]] && printf 'Failed' || printf 'Not triggered' ) | \`pnpm --filter @emdash-cms/admin exec node --run locale:compile\` or \`pnpm test\` failed |
 | AWCMS-Micro added file failure | $( [[ "$FAILURE_CATEGORY" == "AWCMS-Micro added file failure" ]] && printf 'Failed' || printf 'Not triggered' ) | \`pnpm --filter emdash build\`, \`pnpm typecheck\`, \`pnpm lint:quick\`, or \`pnpm build\` failed |
@@ -172,7 +174,7 @@ set -e
 
 if [[ $SSKOBAR_EXIT_CODE -ne 0 ]]; then
 	STATUS="Failed"
-	FAILURE_CATEGORY="Script failure"
+	FAILURE_CATEGORY="awcms-sskkobar config validation failure"
 	finalize_report
 	echo "Validation failed: $FAILURE_CATEGORY" >&2
 	exit "$SSKOBAR_EXIT_CODE"

@@ -1,5 +1,8 @@
 # AWCMS-Micro Changelog
 
+## 0.1.7 - 2026-06-13
+
+- Adds a dedicated failure classification for `awcms-sskkobar` config validation and aligns the environment-configuration doc example with the canonical repository URL.
 ## 0.1.6 - 2026-06-13
 
 - Integrates the canonical `awcms-sskkobar` configuration validation into the main validation workflow and the combined sync-and-validate wrapper.
@@ -25,7 +28,7 @@
 ## Workspace Snapshot - 2026-06-13
 
 - EmDash upstream: `4075652a360e51cd1597e2b595df75a6a1c05e7a` from `emdash-latest/`
-- Root version: `0.1.6`
+- Root version: `0.1.7`
 
 ### Plugins
 
