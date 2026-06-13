@@ -27,7 +27,7 @@ Within this parent workspace:
 - Keep the root workspace snapshot in `CHANGELOG.md` aligned with the current EmDash upstream SHA and the latest versions/changelog entries for every plugin and template in `awcmsmicro-dev/`; keep workspace package releases like `awcmsmicro-dev/packages/admin/` aligned with `awcmsmicro-dev/.changeset/`.
 - Keep root documentation in sync with the actual folder structure and workflow.
 - Keep backup and mirror documentation aligned with the current PAT-based GitLab flow and the safe `.env` overlay used by `scripts/backup/load-config.sh`.
-- Treat the root `.env` as the canonical operator config for this workspace and keep derived files synchronized through `scripts/sync-ss-kobar-env.sh`.
+- Treat the root `.env` as the canonical operator config for this workspace and keep derived files synchronized through `scripts/sync-sskobar-env.sh`.
 - When work is too large for one pass, split it into smaller tracked tasks.
 - If useful, create GitHub issues so work can later be executed by a smaller or lower-cost AI model.
 

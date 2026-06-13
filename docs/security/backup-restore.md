@@ -17,7 +17,7 @@ flowchart LR
 - Backups encrypted with AES-256-CBC (passphrase stored in GitHub Secrets `BACKUP_PASSPHRASE`)
 - Backup retention: 7 most recent backups kept in R2
 - Mirror/recovery config in encrypted backup files; local `.env` overlay via `scripts/backup/load-config.sh`
-- Canonical root environment values use the `ss_kobar_` prefix and are translated for legacy backup scripts by `scripts/backup/load-config.sh`
+- Canonical root environment values live in the root `.env` with standard variable names; managed remote resource values use the `sskobar_` prefix where appropriate
 - PAT-based GitLab mirror flow for code backup and recovery
 
 ## Backup Schedule

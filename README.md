@@ -43,14 +43,15 @@ Hidden root files such as `.gitignore` and local-only `.env` support the parent 
 
 The root `.env` is the canonical operator-managed configuration source for this workspace.
 
-- use the `ss_kobar_` prefix for root-managed environment variables
+- keep standard variable names in `.env`
+- use the `sskobar_` prefix in remote resource values that this workspace owns, such as Worker names, R2 buckets, and D1 database names
 - keep real secrets only in local `.env`, encrypted backup config, or platform secret stores
-- regenerate derived local runtime values with `bash scripts/sync-ss-kobar-env.sh`
-- let `scripts/backup/load-config.sh` translate canonical `ss_kobar_` values into the legacy uppercase names still used by backup and mirror scripts
+- regenerate derived local runtime values with `bash scripts/sync-sskobar-env.sh`
+- let `scripts/backup/load-config.sh` read the canonical `.env` directly for backup and mirror operations
 
 ```mermaid
 flowchart LR
-    A[root .env\nss_kobar_*] --> B[sync-ss-kobar-env.sh]
+    A[root .env\nstandard variables] --> B[sync-sskobar-env.sh]
     A --> C[backup load-config]
     B --> D[.dev.vars]
     C --> E[backup and mirror scripts]
@@ -105,7 +106,7 @@ Exception:
 - `bash scripts/validate-awcmsmicro-boundaries.sh`
 - `bash scripts/validate-awcmsmicro-dev.sh`
 - `bash scripts/sync-and-validate-awcmsmicro-dev.sh`
-- `bash scripts/sync-ss-kobar-env.sh`
+- `bash scripts/sync-sskobar-env.sh`
 - `node awcmsmicro-dev/.github/scripts/awcms-version.mjs status`
 - `node awcmsmicro-dev/.github/scripts/awcms-version.mjs version`
 - `bash scripts/awcms-root-versioning.sh status`
@@ -167,7 +168,7 @@ See [scripts/backup/README.md](scripts/backup/README.md) for full documentation.
 3. Validate `awcmsmicro-dev/` with `bash scripts/validate-awcmsmicro-dev.sh`.
 4. Implement AWCMS-Micro-specific product work only in approved plugin and template boundaries inside `awcmsmicro-dev/`.
 5. Prepare `.awcms-changesets/` entries when AWCMS plugins or templates need downstream version bumps.
-6. Sync derived environment files with `bash scripts/sync-ss-kobar-env.sh` whenever root `.env` changes.
+6. Sync derived environment files with `bash scripts/sync-sskobar-env.sh` whenever root `.env` changes.
 7. Update root documentation when structure or process changes.
 
 During rebuilds, `bash scripts/update-awcmsmicro-dev.sh` preserves only the explicitly approved AWCMS-Micro paths listed in `scripts/awcmsmicro-dev-protected-paths.txt` and governed by `docs/awcms-micro-implementation-boundaries.md`, including `awcmsmicro-dev/.changeset/` for workspace package-release metadata.

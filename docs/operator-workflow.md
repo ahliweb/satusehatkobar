@@ -65,7 +65,7 @@ node awcmsmicro-dev/.github/scripts/awcms-version.mjs status
 ### 6. Sync Root Environment Outputs
 
 ```bash
-bash scripts/sync-ss-kobar-env.sh
+bash scripts/sync-sskobar-env.sh
 ```
 
 ## Decision Rules During Work

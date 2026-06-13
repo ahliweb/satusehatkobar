@@ -15,7 +15,7 @@ flowchart LR
     W --> R[R2 media bucket]
     W --> K[KV session namespace]
     W --> I[Cloudflare Images binding]
-    O[Operator root .env\nss_kobar_*] --> G[GitHub and local wrangler setup]
+    O[Operator root .env\nstandard names plus sskobar_ resource values] --> G[GitHub and local wrangler setup]
     G --> W
 ```
 
@@ -66,7 +66,7 @@ Do not commit tokens, secrets, or private credentials. This repository's referen
 
 Keep real values in Cloudflare secrets, CI secrets, or local operator environment files.
 
-For this repository, the canonical local source is the root `.env` file using the `ss_kobar_` namespace. Mirror the production-facing values into GitHub secrets and variables before deployment.
+For this repository, the canonical local source is the root `.env` file. Keep standard variable names, but use `sskobar_` for managed Cloudflare resource values where the workspace owns the naming. Mirror the production-facing values into GitHub secrets and variables before deployment.
 
 Suggested categories:
 

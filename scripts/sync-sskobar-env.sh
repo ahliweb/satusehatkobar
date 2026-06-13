@@ -63,15 +63,15 @@ require_file "$ENV_FILE"
 load_env_file "$ENV_FILE"
 
 cat > "$DEV_VARS_FILE" <<EOF
-# Managed by scripts/sync-ss-kobar-env.sh.
-# Canonical source: .env (ss_kobar_* namespace).
+# Managed by scripts/sync-sskobar-env.sh.
+# Canonical source: .env (standard variable names).
 # Keep real secrets in the root .env or shell environment, not in this tracked file.
-AWCMS_MICRO_SITE_URL="${ss_kobar_local_site_url:-}"
-AWCMS_MICRO_STORAGE_PUBLIC_BASE_URL="${ss_kobar_local_storage_public_base_url:-}"
+AWCMS_MICRO_SITE_URL="${LOCAL_SITE_URL:-}"
+AWCMS_MICRO_STORAGE_PUBLIC_BASE_URL="${LOCAL_STORAGE_PUBLIC_BASE_URL:-}"
 CLOUDFLARE_ACCOUNT_ID=""
 CLOUDFLARE_API_TOKEN=""
-AWCMS_MICRO_D1_DATABASE_ID="${ss_kobar_cloudflare_dev_d1_database_id:-}"
-AWCMS_MICRO_SESSION_NAMESPACE_ID="${ss_kobar_cloudflare_dev_kv_namespace_id:-}"
+AWCMS_MICRO_D1_DATABASE_ID="${CLOUDFLARE_DEV_D1_DATABASE_ID:-}"
+AWCMS_MICRO_SESSION_NAMESPACE_ID="${CLOUDFLARE_DEV_KV_NAMESPACE_ID:-}"
 EOF
 
 printf 'Updated %s from %s\n' "$DEV_VARS_FILE" "$ENV_FILE"
