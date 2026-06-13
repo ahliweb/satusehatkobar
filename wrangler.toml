@@ -1,5 +1,5 @@
 name = "awcms-sskkobar-worker"
-main = "awcmsmicro-dev/templates/awcms-micro-default-cloudflare/src/worker.ts"
+main = "awcmsmicro-dev/templates/awcms-sskobar-cloudflare/src/worker.ts"
 compatibility_date = "2026-05-14"
 compatibility_flags = ["nodejs_compat"]
 
@@ -10,7 +10,7 @@ mode = "smart"
 [[d1_databases]]
 binding = "DB"
 database_name = "awcms-sskkobar-d1"
-database_id = "df3281e0-4066-4da8-8911-1a0ed60a4562"
+database_id = ""
 migrations_dir = "awcmsmicro-dev/packages/core/src/database/migrations"
 
 # Development R2 bucket for media storage
@@ -21,7 +21,7 @@ bucket_name = "awcms-sskkobar-r2"
 # Development KV namespace for sessions
 [[kv_namespaces]]
 binding = "SESSION"
-id = "7382419ae0194a10949290c9e69d0840"
+id = ""
 
 # Cloudflare Images binding
 [images]
@@ -33,8 +33,8 @@ binding = "LOADER"
 
 # Environment variables
 [vars]
-AWCMS_MICRO_SITE_URL = "https://awcms-micro-dev.ahlikoding.com"
-AWCMS_MICRO_STORAGE_PUBLIC_BASE_URL = "https://awcms-micro-dev-s3.ahlikoding.com"
+AWCMS_MICRO_SITE_URL = "https://awcms-sskobar.ahlikoding.com"
+AWCMS_MICRO_STORAGE_PUBLIC_BASE_URL = "https://awcms-sskobar-s3.ahlikoding.com"
 AWCMS_MICRO_GALLERY_MEDIA_STORAGE = "r2"
 AWCMS_MICRO_GALLERY_CLOUDFLARE_IMAGES = "optional"
 AWCMS_MICRO_GALLERY_CLOUDFLARE_STREAM = "optional"

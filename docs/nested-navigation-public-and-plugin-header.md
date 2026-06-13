@@ -56,7 +56,7 @@ Recommended AWCMS-Micro locations:
 
 ```txt
 awcmsmicro-dev/templates/awcms-micro-default/
-awcmsmicro-dev/templates/awcms-micro-default-cloudflare/
+awcmsmicro-dev/templates/awcms-sskobar-cloudflare/
 awcmsmicro-dev/packages/plugins/awcms-micro-sikesra/
 awcmsmicro-dev/docs/awcms-micro/
 ```
@@ -189,7 +189,7 @@ Create a template-owned component:
 
 ```txt
 awcmsmicro-dev/templates/awcms-micro-default/src/components/PublicNavigation.astro
-awcmsmicro-dev/templates/awcms-micro-default-cloudflare/src/components/PublicNavigation.astro
+awcmsmicro-dev/templates/awcms-sskobar-cloudflare/src/components/PublicNavigation.astro
 ```
 
 Recommended implementation:

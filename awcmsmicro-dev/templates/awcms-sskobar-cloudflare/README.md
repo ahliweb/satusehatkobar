@@ -2,7 +2,7 @@
 
 This template is a deployable AWCMS-Micro example site for Cloudflare.
 
-It keeps EmDash core untouched and lives only inside `awcmsmicro-dev/templates/awcms-micro-default-cloudflare/`.
+It keeps EmDash core untouched and lives only inside `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/`.
 
 ## Purpose
 
@@ -104,9 +104,9 @@ For the implementation-level PRD, see `docs/TECHNICAL_PRD.md`.
 
 ## Naming Guidance
 
-- package name: `@awcms-micro/template-default-cloudflare`
+- package name: `@awcms-sskobar/template-sskobar-cloudflare`
 - canonical template identifier: `awcms-sskkobar`
-- recommended local folder example: `templates/awcms-micro-default-cloudflare/`
+- recommended local folder example: `templates/awcms-sskobar-cloudflare/`
 - related example plugin packages: `@awcms-micro/plugin-sikesra`, `@awcms-micro/plugin-gallery`
 
 ## License

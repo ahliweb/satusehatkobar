@@ -8,7 +8,6 @@ ENV_FILE="$ROOT_DIR/.env"
 ROOT_WRANGLER_FILE="$ROOT_DIR/wrangler.toml"
 BACKUP_WORKFLOW_FILE="$ROOT_DIR/.github/workflows/backup-on-db-changes.yml"
 BACKUP_CONFIG_EXAMPLE_FILE="$ROOT_DIR/scripts/backup/.backup-config.example"
-TEMPLATE_WRANGLER_FILE="$ROOT_DIR/awcmsmicro-dev/templates/awcms-micro-default-cloudflare/wrangler.jsonc"
 
 trim() {
     local value="$1"
@@ -77,12 +76,18 @@ require_equal() {
 }
 
 require_file "$ENV_FILE"
+
+load_env_file "$ENV_FILE"
+
+TEMPLATE_DIR_RELATIVE="${CLOUDFLARE_DEV_WORKER_MAIN%/src/worker.ts}"
+TEMPLATE_WRANGLER_FILE="$ROOT_DIR/$TEMPLATE_DIR_RELATIVE/wrangler.jsonc"
+TEMPLATE_PACKAGE_FILE="$ROOT_DIR/$TEMPLATE_DIR_RELATIVE/package.json"
+
 require_file "$ROOT_WRANGLER_FILE"
 require_file "$BACKUP_WORKFLOW_FILE"
 require_file "$BACKUP_CONFIG_EXAMPLE_FILE"
 require_file "$TEMPLATE_WRANGLER_FILE"
-
-load_env_file "$ENV_FILE"
+require_file "$TEMPLATE_PACKAGE_FILE"
 
 require_equal "awcms-sskkobar" "${TEMPLATE_NAME:-}" "TEMPLATE_NAME"
 require_equal "awcms-sskkobar-worker" "${CLOUDFLARE_WORKER_NAME:-}" "CLOUDFLARE_WORKER_NAME"
@@ -93,6 +98,7 @@ require_equal "awcms-sskkobar-d1" "${D1_DATABASE_NAME:-}" "D1_DATABASE_NAME"
 require_equal "awcms-sskkobar-r2" "${CLOUDFLARE_WORKER_R2_BUCKET_NAME:-}" "CLOUDFLARE_WORKER_R2_BUCKET_NAME"
 require_equal "awcms-sskkobar-r2" "${CLOUDFLARE_DEV_R2_BUCKET_NAME:-}" "CLOUDFLARE_DEV_R2_BUCKET_NAME"
 require_equal "awcms-sskkobar-r2backup" "${R2_BUCKET_NAME:-}" "R2_BUCKET_NAME"
+require_equal "@awcms-sskobar/template-sskobar-cloudflare" "${GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE:-}" "GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE"
 
 require_contains 'name = "awcms-sskkobar-worker"' "$ROOT_WRANGLER_FILE"
 require_contains 'database_name = "awcms-sskkobar-d1"' "$ROOT_WRANGLER_FILE"
@@ -109,5 +115,6 @@ require_contains 'R2_BUCKET_NAME="awcms-sskkobar-r2backup"' "$BACKUP_CONFIG_EXAM
 require_contains '"name": "awcms-sskkobar-worker"' "$TEMPLATE_WRANGLER_FILE"
 require_contains '"database_name": "awcms-sskkobar-d1"' "$TEMPLATE_WRANGLER_FILE"
 require_contains '"bucket_name": "awcms-sskkobar-r2"' "$TEMPLATE_WRANGLER_FILE"
+require_contains '"name": "@awcms-sskobar/template-sskobar-cloudflare"' "$TEMPLATE_PACKAGE_FILE"
 
 printf '[validate-sskobar-config] Canonical awcms-sskkobar configuration is consistent.\n'

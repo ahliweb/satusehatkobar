@@ -4,7 +4,7 @@ This document describes the Cloudflare deployment model for AWCMS-Micro example 
 
 ## Scope
 
-This runbook applies to AWCMS-Micro example deployments built from plugin and template boundaries, especially `awcmsmicro-dev/templates/awcms-micro-default-cloudflare/`.
+This runbook applies to AWCMS-Micro example deployments built from plugin and template boundaries, especially `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/`.
 
 ## Example Production Shape
 
@@ -33,7 +33,7 @@ Do not commit tokens, secrets, or private credentials. This repository's referen
 
 - Product behavior should come from AWCMS-Micro plugins and templates.
 - Root scripts and root docs support deployment operations but are not the deployed product.
-- The Cloudflare reference site is the template at `awcmsmicro-dev/templates/awcms-micro-default-cloudflare/`.
+- The Cloudflare reference site is the template at `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/`.
 
 ## Required Cloudflare Resources
 
@@ -83,7 +83,7 @@ Suggested categories:
 ## Provisioning Sequence
 
 1. Validate the local workspace with `bash scripts/validate-awcmsmicro-dev.sh`.
-2. Open `awcmsmicro-dev/templates/awcms-micro-default-cloudflare/` and review the committed bindings in `wrangler.jsonc`.
+2. Open `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/` and review the committed bindings in `wrangler.jsonc`.
 3. Create the D1 database if needed.
 4. Create the R2 bucket if needed.
 5. Inject real binding identifiers locally or in CI.
@@ -107,7 +107,7 @@ Before any production deploy, confirm all of the following:
 
 ## Deploy Procedure
 
-From `awcmsmicro-dev/templates/awcms-micro-default-cloudflare/`:
+From `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/`:
 
 1. Run `pnpm typecheck`.
 2. Run `pnpm build`.

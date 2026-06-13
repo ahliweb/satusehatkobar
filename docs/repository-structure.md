@@ -60,7 +60,7 @@ Expected root scripts:
 ## AWCMS-Micro Example Locations
 
 - Example template: `awcmsmicro-dev/templates/awcms-micro-default/`
-- Example Cloudflare template: `awcmsmicro-dev/templates/awcms-micro-default-cloudflare/`
+- Example Cloudflare template: `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/`
 - Example plugin: `awcmsmicro-dev/packages/plugins/awcms-micro-sikesra/`
 - Example gallery plugin: `awcmsmicro-dev/packages/plugins/awcms-micro-gallery/`
 - Reserved Cloudflare demo boundary: `awcmsmicro-dev/demos/awcms-micro-cloudflare/`

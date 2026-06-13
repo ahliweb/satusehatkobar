@@ -2,13 +2,13 @@
 
 ## 1. Overview
 
-This document describes the technical implementation requirements for `@awcms-micro/template-default-cloudflare`.
+This document describes the technical implementation requirements for `@awcms-sskobar/template-sskobar-cloudflare`.
 
 The template is the deployable Cloudflare-first reference surface for AWCMS-Micro. It uses Astro, EmDash, and the Cloudflare runtime while keeping core EmDash unchanged.
 
 ### Product Shape
 
-- package: `@awcms-micro/template-default-cloudflare`
+- package: `@awcms-sskobar/template-sskobar-cloudflare`
 - template version: current package version in `package.json`
 - runtime: Astro on Cloudflare Workers
 - bindings: D1, R2, KV session storage, Worker Loader, Images binding

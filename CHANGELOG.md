@@ -1,5 +1,8 @@
 # AWCMS-Micro Changelog
 
+## 0.1.5 - 2026-06-13
+
+- Expands the root `.env` sync flow so it updates related deployment, workflow, template, and operator example files from a single source of truth.
 ## 0.1.4 - 2026-06-13
 
 - Adds canonical `awcms-sskkobar` configuration validation and teaches the deploy workflow to read the canonical template identifier alongside the template package target.
@@ -19,7 +22,7 @@
 ## Workspace Snapshot - 2026-06-13
 
 - EmDash upstream: `4075652a360e51cd1597e2b595df75a6a1c05e7a` from `emdash-latest/`
-- Root version: `0.1.4`
+- Root version: `0.1.5`
 
 ### Plugins
 
@@ -39,8 +42,8 @@
 
 ### Templates
 
-- `@awcms-micro/template-default-cloudflare` `0.1.0` - Updates the AWCMS-Micro gallery and Cloudflare template release surfaces so the versioning flow covers both plugin-owned media helpers and the Cloudflare-first reference template.
 - `@awcms-micro/template-default-example` `0.0.2` - Adds plugin-owned navigation exports for the AWCMS-Micro example plugin and updates the default Node template guidance to match the plugin-and-template-only release model.
+- `@awcms-sskobar/template-sskobar-cloudflare` `0.1.0` - latest changelog section: 0.1.0
 - `@emdash-cms/template-blank` `0.0.3` - latest changelog section: 0.0.3
 - `@emdash-cms/template-blog` `0.0.3` - latest changelog section: 0.0.3
 - `@emdash-cms/template-blog-cloudflare` `0.0.3` - latest changelog section: 0.0.3

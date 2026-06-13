@@ -19,7 +19,7 @@ const CLOUDFARE_PORT = 4565;
 
 const templates = [
 	{ name: "awcms-micro-default", port: LOCAL_PORT, dir: resolve(ROOT, "templates/awcms-micro-default") },
-	{ name: "awcms-micro-default-cloudflare", port: CLOUDFARE_PORT, dir: resolve(ROOT, "templates/awcms-micro-default-cloudflare") },
+	{ name: "awcms-sskobar-cloudflare", port: CLOUDFARE_PORT, dir: resolve(ROOT, "templates/awcms-sskobar-cloudflare") },
 ];
 
 async function buildTemplate(dir) {

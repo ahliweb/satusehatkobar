@@ -10,7 +10,7 @@ SYNC_SCRIPT="$SCRIPT_DIR/update-awcmsmicro-dev.sh"
 
 REQUIRED_PATHS=(
 	"templates/awcms-micro-default"
-	"templates/awcms-micro-default-cloudflare"
+	"templates/awcms-sskobar-cloudflare"
 	"packages/plugins/awcms-micro-sikesra"
 	"packages/plugins/awcms-micro-gallery"
 	"demos/awcms-micro-cloudflare"

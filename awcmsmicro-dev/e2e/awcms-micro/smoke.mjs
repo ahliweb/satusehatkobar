@@ -23,9 +23,9 @@ const templates = [
 		routes: ["/", "/id", "/aggregate", "/id/aggregate", "/posts", "/id/posts", "/news", "/id/news", "/_emdash/api/plugins/awcms-micro-sikesra/public/status"],
 	},
 	{
-		name: "awcms-micro-default-cloudflare",
+		name: "awcms-sskobar-cloudflare",
 		port: CLOUDFARE_PORT,
-		dir: resolve(ROOT, "templates/awcms-micro-default-cloudflare"),
+		dir: resolve(ROOT, "templates/awcms-sskobar-cloudflare"),
 		routes: ["/", "/id", "/aggregate", "/id/aggregate", "/posts", "/id/posts", "/news", "/id/news", "/_emdash/api/plugins/awcms-micro-sikesra/public/status"],
 	},
 ];
@@ -167,10 +167,10 @@ async function validateTemplate(template) {
 		if (path === "/id" && template.name === "awcms-micro-default" && !body.includes("Lihat Agregat Publik")) {
 			throw new Error(`${template.name}: localized home page missing Indonesian aggregate link`);
 		}
-		if (path === "/" && template.name === "awcms-micro-default-cloudflare" && !body.includes("Plugin Console")) {
+		if (path === "/" && template.name === "awcms-sskobar-cloudflare" && !body.includes("Plugin Console")) {
 			throw new Error(`${template.name}: home page missing plugin console link`);
 		}
-		if (path === "/id" && template.name === "awcms-micro-default-cloudflare" && !body.includes("Konsol Plugin")) {
+		if (path === "/id" && template.name === "awcms-sskobar-cloudflare" && !body.includes("Konsol Plugin")) {
 			throw new Error(`${template.name}: localized home page missing Indonesian plugin console link`);
 		}
 		if (path === "/" && !body.includes("Public Data")) {

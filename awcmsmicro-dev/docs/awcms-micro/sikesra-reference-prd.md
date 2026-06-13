@@ -12,7 +12,7 @@ In scope:
 
 - `awcmsmicro-dev/packages/plugins/awcms-micro-sikesra/`
 - `awcmsmicro-dev/templates/awcms-micro-default/`
-- `awcmsmicro-dev/templates/awcms-micro-default-cloudflare/`
+- `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/`
 - `awcmsmicro-dev/docs/awcms-micro/`
 - `awcmsmicro-dev/e2e/awcms-micro/`
 

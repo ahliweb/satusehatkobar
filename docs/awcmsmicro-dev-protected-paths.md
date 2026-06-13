@@ -11,7 +11,7 @@ Use `docs/awcms-micro-implementation-boundaries.md` for the full governance rule
 These paths are relative to `awcmsmicro-dev/`:
 
 - `templates/awcms-micro-default`
-- `templates/awcms-micro-default-cloudflare`
+- `templates/awcms-sskobar-cloudflare`
 - `packages/plugins/awcms-micro-sikesra`
 - `packages/plugins/awcms-micro-gallery`
 - `demos/awcms-micro-cloudflare`

@@ -206,7 +206,7 @@ Set these as repository variables (not secrets) so workflows can stay aligned wi
 | `GITHUB_ACTION_NODE_VERSION`            | `22`                                       |
 | `GITHUB_ACTION_PNPM_VERSION`            | `11.1.3`                                   |
 | `GITHUB_ACTION_TEMPLATE_NAME`           | `awcms-sskkobar`                           |
-| `GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE` | `@awcms-micro/template-default-cloudflare` |
+| `GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE` | `@awcms-sskobar/template-sskobar-cloudflare` |
 
 ## Security Model
 

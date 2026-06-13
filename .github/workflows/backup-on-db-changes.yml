@@ -48,18 +48,12 @@ jobs:
 
       - name: Export D1 database
         run: |
-          # Get list of non-FTS tables
           TABLES=$(wrangler d1 execute "$D1_DATABASE_NAME" --remote --command "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE '_emdash_fts_%' ORDER BY name;" 2>/dev/null | jq -r '.[0].results[].name' | tr '\n' ' ')
-          
           echo "Exporting tables: $TABLES"
-          
-          # Build table arguments
           TABLE_ARGS=""
           for TABLE in $TABLES; do
             TABLE_ARGS="$TABLE_ARGS --table $TABLE"
           done
-          
-          # Export
           wrangler d1 export "$D1_DATABASE_NAME" --remote --output /tmp/backup.sql $TABLE_ARGS -y
 
       - name: Encrypt backup
@@ -69,7 +63,6 @@ jobs:
             -in /tmp/backup.sql \
             -out "/tmp/backup-${TIMESTAMP}.sql.enc" \
             -pass pass:"$BACKUP_PASSPHRASE"
-          
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
 
       - name: Upload to R2
@@ -82,7 +75,6 @@ jobs:
         run: |
           BACKUPS=$(wrangler r2 object list "$R2_BUCKET_NAME" --prefix "backups/db/" --remote --format json 2>/dev/null | jq -r '.objects[].key' | sort)
           BACKUP_COUNT=$(echo "$BACKUPS" | wc -l)
-          
           if [ "$BACKUP_COUNT" -gt 7 ]; then
             OLD_BACKUPS=$(echo "$BACKUPS" | head -n -7)
             echo "Removing old backups:"

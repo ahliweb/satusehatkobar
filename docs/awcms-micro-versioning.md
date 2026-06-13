@@ -17,7 +17,7 @@ It covers:
 - `@awcms-micro/plugin-sikesra`
 - `@awcms-micro/plugin-gallery`
 - `@awcms-micro/template-default-example`
-- `@awcms-micro/template-default-cloudflare`
+- `@awcms-sskobar/template-sskobar-cloudflare`
 
 Package-level releases are split into two groups:
 

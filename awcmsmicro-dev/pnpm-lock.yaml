@@ -2184,7 +2184,7 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
 
-  templates/awcms-micro-default-cloudflare:
+  templates/awcms-sskobar-cloudflare:
     dependencies:
       '@astrojs/cloudflare':
         specifier: 'catalog:'

@@ -6,7 +6,7 @@ This document explains how to deploy the AWCMS-Micro example template at `awcms-
 
 The target template is:
 
-- `templates/awcms-micro-default-cloudflare/`
+- `templates/awcms-sskobar-cloudflare/`
 
 ## Deployment Scope
 
@@ -25,11 +25,11 @@ This deployment flow assumes:
 
 ## Files To Review
 
-- `templates/awcms-micro-default-cloudflare/wrangler.jsonc`
-- `templates/awcms-micro-default-cloudflare/.dev.vars.example`
-- `templates/awcms-micro-default-cloudflare/.env.example`
-- `templates/awcms-micro-default-cloudflare/README.md`
-- `templates/awcms-micro-default-cloudflare/scripts/validate-cloudflare-env.sh`
+- `templates/awcms-sskobar-cloudflare/wrangler.jsonc`
+- `templates/awcms-sskobar-cloudflare/.dev.vars.example`
+- `templates/awcms-sskobar-cloudflare/.env.example`
+- `templates/awcms-sskobar-cloudflare/README.md`
+- `templates/awcms-sskobar-cloudflare/scripts/validate-cloudflare-env.sh`
 
 ## Required Secrets And Runtime Values
 
@@ -47,7 +47,7 @@ Set these as non-secret deployment values or local overrides when needed:
 
 ## Local Setup
 
-1. Copy `templates/awcms-micro-default-cloudflare/.dev.vars.example` to `.dev.vars` in the same folder.
+1. Copy `templates/awcms-sskobar-cloudflare/.dev.vars.example` to `.dev.vars` in the same folder.
 2. Fill in the real local or CI values without committing them.
 3. Export the same variables into your current shell if you want to run the validation script directly.
 
@@ -67,7 +67,7 @@ export AWCMS_MICRO_SESSION_NAMESPACE_ID="your-session-kv-namespace-id"
 Run:
 
 ```bash
-bash templates/awcms-micro-default-cloudflare/scripts/validate-cloudflare-env.sh
+bash templates/awcms-sskobar-cloudflare/scripts/validate-cloudflare-env.sh
 ```
 
 The script checks:
@@ -106,7 +106,7 @@ pnpm test
 
 ## Dry Run And Deploy
 
-From `templates/awcms-micro-default-cloudflare/`:
+From `templates/awcms-sskobar-cloudflare/`:
 
 ```bash
 pnpm build

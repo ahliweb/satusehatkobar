@@ -43,7 +43,7 @@ When choosing where a change belongs:
 - The approved rebuild-safe boundary rules live in `docs/awcms-micro-implementation-boundaries.md` and `scripts/awcmsmicro-dev-protected-paths.txt`.
 - Deployment guidance lives in `docs/deployment/`.
 - Security and compliance baselines live in `docs/security/`.
-- Example template work belongs in `awcmsmicro-dev/templates/awcms-micro-default/` or `awcmsmicro-dev/templates/awcms-micro-default-cloudflare/`.
+- Example template work belongs in `awcmsmicro-dev/templates/awcms-micro-default/` or `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/`.
 - Example plugin work belongs in `awcmsmicro-dev/packages/plugins/awcms-micro-sikesra/`.
 - Gallery-specific example work belongs in `awcmsmicro-dev/packages/plugins/awcms-micro-gallery/` and `awcmsmicro-dev/docs/gallery/`.
 - Reserved Cloudflare demo work belongs in `awcmsmicro-dev/demos/awcms-micro-cloudflare/`.

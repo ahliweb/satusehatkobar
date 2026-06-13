@@ -41,7 +41,7 @@ Supporting documentation, demos, and E2E coverage may exist alongside them, but 
 - `packages/plugins/awcms-micro-sikesra/`: governance, navigation, access, audit, and ABAC-oriented example plugin
 - `packages/plugins/awcms-micro-gallery/`: gallery/media example plugin
 - `templates/awcms-micro-default/`: Node/SQLite reference template
-- `templates/awcms-micro-default-cloudflare/`: Cloudflare reference template
+- `templates/awcms-sskobar-cloudflare/`: Cloudflare reference template
 
 ## Versioning And Changelog
 
@@ -66,7 +66,7 @@ AWCMS-Micro adopts EmDash as-is wherever possible.
 3. Enable the example plugins you need.
 4. Run the local development workflow for the selected template.
 
-For Cloudflare-oriented setups, start with `templates/awcms-micro-default-cloudflare/`.
+For Cloudflare-oriented setups, start with `templates/awcms-sskobar-cloudflare/`.
 
 ## Repository Principles
 

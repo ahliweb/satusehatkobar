@@ -9,7 +9,7 @@ emdash({
 })
 ```
 
-The `MEDIA` R2 binding is declared in `templates/awcms-micro-default-cloudflare/wrangler.jsonc`. Gallery JSON should store public URLs or EmDash media URLs only. Do not store private R2 keys, signed upload credentials, or API tokens in gallery content.
+The `MEDIA` R2 binding is declared in `templates/awcms-sskobar-cloudflare/wrangler.jsonc`. Gallery JSON should store public URLs or EmDash media URLs only. Do not store private R2 keys, signed upload credentials, or API tokens in gallery content.
 
 ## Optional Cloudflare Images
 

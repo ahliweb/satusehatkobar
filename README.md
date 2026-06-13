@@ -46,7 +46,7 @@ The root `.env` is the canonical operator-managed configuration source for this 
 - keep standard variable names in `.env`
 - use the canonical `awcms-sskkobar` naming family for workspace-owned remote resource values, including the template identifier, Worker name, R2 buckets, backup bucket, and D1 database name
 - keep real secrets only in local `.env`, encrypted backup config, or platform secret stores
-- regenerate derived local runtime values with `bash scripts/sync-sskobar-env.sh`
+- regenerate derived local runtime values and related config files with `bash scripts/sync-sskobar-env.sh`
 - let `scripts/backup/load-config.sh` read the canonical `.env` directly for backup and mirror operations
 
 ```mermaid
@@ -144,7 +144,7 @@ See [scripts/backup/README.md](scripts/backup/README.md) for full documentation.
 ## AWCMS-Micro Example Additions
 
 - Example template: `awcmsmicro-dev/templates/awcms-micro-default/`
-- Example Cloudflare template: `awcmsmicro-dev/templates/awcms-micro-default-cloudflare/`
+- Example Cloudflare template: `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/`
 - Example plugin: `awcmsmicro-dev/packages/plugins/awcms-micro-sikesra/`
 - Example gallery plugin: `awcmsmicro-dev/packages/plugins/awcms-micro-gallery/`
 - Reserved Cloudflare demo boundary: `awcmsmicro-dev/demos/awcms-micro-cloudflare/`

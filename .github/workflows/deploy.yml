@@ -15,7 +15,7 @@ jobs:
       NODE_VERSION: ${{ vars.GITHUB_ACTION_NODE_VERSION || '22' }}
       PNPM_VERSION: ${{ vars.GITHUB_ACTION_PNPM_VERSION || '11.1.3' }}
       TEMPLATE_NAME: ${{ vars.GITHUB_ACTION_TEMPLATE_NAME || 'awcms-sskkobar' }}
-      WORKER_PACKAGE: ${{ vars.GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE || '@awcms-micro/template-default-cloudflare' }}
+      WORKER_PACKAGE: ${{ vars.GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE || '@awcms-sskobar/template-sskobar-cloudflare' }}
 
     steps:
       - name: Checkout repository

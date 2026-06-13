@@ -7,7 +7,7 @@
 	"placement": { "mode": "smart" },
 	"routes": [
 		{
-			"pattern": "awcms-micro.ahlikoding.com/*",
+			"pattern": "awcms-sskobar.ahlikoding.com/*",
 			"zone_name": "ahlikoding.com",
 			"custom_domain": false
 		}
@@ -16,7 +16,7 @@
 		{
 			"binding": "DB",
 			"database_name": "awcms-sskkobar-d1",
-			"database_id": "df3281e0-4066-4da8-8911-1a0ed60a4562"
+			"database_id": "REPLACE_WITH_SSKOBAR_PRODUCTION_D1_DATABASE_ID"
 		}
 	],
 	"r2_buckets": [
@@ -28,7 +28,7 @@
 	"kv_namespaces": [
 		{
 			"binding": "SESSION",
-			"id": "7382419ae0194a10949290c9e69d0840"
+			"id": "REPLACE_WITH_SSKOBAR_PRODUCTION_KV_NAMESPACE_ID"
 		}
 	],
 	"images": {
@@ -40,8 +40,8 @@
 		}
 	],
 	"vars": {
-		"AWCMS_MICRO_SITE_URL": "https://awcms-micro.ahlikoding.com",
-		"AWCMS_MICRO_STORAGE_PUBLIC_BASE_URL": "https://awcms-micro-s3.ahlikoding.com",
+		"AWCMS_MICRO_SITE_URL": "https://awcms-sskobar.ahlikoding.com",
+		"AWCMS_MICRO_STORAGE_PUBLIC_BASE_URL": "https://awcms-sskobar-s3.ahlikoding.com",
 		"AWCMS_MICRO_GALLERY_MEDIA_STORAGE": "r2",
 		"AWCMS_MICRO_GALLERY_CLOUDFLARE_IMAGES": "optional",
 		"AWCMS_MICRO_GALLERY_CLOUDFLARE_STREAM": "optional"

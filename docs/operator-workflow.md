@@ -20,7 +20,7 @@ flowchart TD
 2. Rebuild `awcmsmicro-dev/` from `emdash-latest/`.
 3. Validate the rebuilt workspace.
 4. Implement AWCMS-Micro work only in approved plugin and template boundaries.
-5. Sync derived environment files from the canonical root `.env`.
+5. Sync derived environment and deployment files from the canonical root `.env`.
 6. Prepare AWCMS release-note inputs when plugin or template versions should change, keep `awcmsmicro-dev/.changeset/` preserved for workspace packages like `@emdash-cms/admin`, and update the root workspace snapshot when the plugin/template inventory changes.
 7. Re-run targeted validation.
 8. Update governance docs if boundaries, workflow, deployment, or security rules changed.

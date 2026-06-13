@@ -11,7 +11,7 @@ Without an allowlisted boundary, future AWCMS-Micro-only paths can be deleted du
 These paths are relative to `awcmsmicro-dev/` and are the only locations that may carry AWCMS-Micro-owned implementation work across rebuilds:
 
 - `templates/awcms-micro-default`
-- `templates/awcms-micro-default-cloudflare`
+- `templates/awcms-sskobar-cloudflare`
 - `packages/plugins/awcms-micro-sikesra`
 - `packages/plugins/awcms-micro-gallery`
 - `demos/awcms-micro-cloudflare`

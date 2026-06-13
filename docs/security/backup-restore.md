@@ -139,7 +139,7 @@ Verify: `SELECT COUNT(*) FROM _emdash_migrations;` should return 39.
    cd awcmsmicro-dev
    pnpm install
    pnpm build
-   pnpm --filter @awcms-micro/template-default-cloudflare exec wrangler deploy
+   pnpm --filter @awcms-sskobar/template-sskobar-cloudflare exec wrangler deploy
    ```
 
 ## Testing Restore Procedures

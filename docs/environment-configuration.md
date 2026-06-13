@@ -36,7 +36,7 @@ Run the sync script after editing `.env`:
 bash scripts/sync-sskobar-env.sh
 ```
 
-That script updates the tracked root `.dev.vars` file with non-secret local Cloudflare runtime values derived from `.env`.
+That script updates the tracked root `.dev.vars` file plus related deployment/config files derived from `.env`, including the root `wrangler.toml`, the Cloudflare template `wrangler.jsonc`, workflow defaults, and operator config examples.
 
 `scripts/backup/load-config.sh` reads the same canonical `.env` and exports the values needed by the current backup and mirror scripts.
 
