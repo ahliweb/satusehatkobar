@@ -1,4 +1,4 @@
-name = "awcms-micro-dev"
+name = "awcms-sskkobar-worker"
 main = "awcmsmicro-dev/templates/awcms-micro-default-cloudflare/src/worker.ts"
 compatibility_date = "2026-05-14"
 compatibility_flags = ["nodejs_compat"]
@@ -9,14 +9,14 @@ mode = "smart"
 # Development D1 database
 [[d1_databases]]
 binding = "DB"
-database_name = "awcms-micro-dev-d1"
+database_name = "awcms-sskkobar-d1"
 database_id = "df3281e0-4066-4da8-8911-1a0ed60a4562"
 migrations_dir = "awcmsmicro-dev/packages/core/src/database/migrations"
 
 # Development R2 bucket for media storage
 [[r2_buckets]]
 binding = "MEDIA"
-bucket_name = "awcms-micro-dev-media"
+bucket_name = "awcms-sskkobar-r2"
 
 # Development KV namespace for sessions
 [[kv_namespaces]]

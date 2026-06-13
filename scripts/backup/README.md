@@ -20,7 +20,7 @@ npm install -g wrangler
 
 All backup settings live in one encrypted file: `scripts/backup/.backup-config.age`
 
-The root `.env` file is now the canonical local operator config for the workspace. Keep standard variable names there, use `sskobar_` for workspace-owned remote resource values, then sync local runtime outputs with:
+The root `.env` file is now the canonical local operator config for the workspace. Keep standard variable names there, use the `awcms-sskkobar` naming family for workspace-owned remote resource values, then sync local runtime outputs with:
 
 ```bash
 bash scripts/sync-sskobar-env.sh
@@ -66,10 +66,10 @@ shred -u scripts/backup/.backup-config
 | `GITLAB_USERNAME`       | GitLab account username      | `myusername`             |
 | `GITLAB_REPO_NAME`      | GitLab repo for mirror       | `awcms-micro`            |
 | `GITLAB_PAT`            | GitLab personal access token | `glpat-...`              |
-| `R2_BUCKET_NAME`        | Cloudflare R2 bucket         | `awcms-micro-backups`    |
+| `R2_BUCKET_NAME`        | Cloudflare R2 bucket         | `awcms-sskkobar-r2backup` |
 | `CLOUDFLARE_API_TOKEN`  | Cloudflare API token         | `abc123...`              |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID        | `def456...`              |
-| `D1_DATABASE_NAME`      | D1 database to backup        | `awcms-micro-db`         |
+| `D1_DATABASE_NAME`      | D1 database to backup        | `awcms-sskkobar-d1`      |
 | `BACKUP_PASSPHRASE`     | Master encryption key        | `your-secure-passphrase` |
 | `BACKUP_CRON_SCHEDULE`  | Backup schedule (cron)       | `0 2 * * *`              |
 | `BACKUP_SSH_KEYS`       | Include SSH keys in backup   | `true`                   |
@@ -77,7 +77,7 @@ shred -u scripts/backup/.backup-config
 
 ### Cloudflare Deployment Fields
 
-These mirror the `awcms-micro` Worker deployment settings from `wrangler.jsonc`.
+These mirror the `awcms-sskkobar-worker` deployment settings from `wrangler.jsonc`.
 
 | Setting                                     | Description                 |
 | ------------------------------------------- | --------------------------- |
@@ -210,7 +210,7 @@ Set these as repository variables (not secrets) so workflows can stay aligned wi
 
 ```mermaid
 flowchart TD
-    A[root .env\nstandard names and sskobar_ resource values] --> B[sync-sskobar-env.sh]
+    A[root .env\nstandard names and awcms-sskkobar resource values] --> B[sync-sskobar-env.sh]
     A --> C[load-config.sh]
     B --> D[.dev.vars]
     C --> E[backup and recovery scripts]

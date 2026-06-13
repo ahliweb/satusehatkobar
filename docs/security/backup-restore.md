@@ -13,11 +13,11 @@ flowchart LR
 
 - D1 backups run daily at 2 AM UTC via `.github/workflows/backup-automated.yml`
 - Additional backups trigger automatically on push with database migration changes via `.github/workflows/backup-on-db-changes.yml`
-- R2 objects in `awcms-micro-media` are protected; backup copies stored in `awcms-micro-backups`
+- R2 objects in `awcms-sskkobar-r2` are protected; backup copies stored in `awcms-sskkobar-r2backup`
 - Backups encrypted with AES-256-CBC (passphrase stored in GitHub Secrets `BACKUP_PASSPHRASE`)
 - Backup retention: 7 most recent backups kept in R2
 - Mirror/recovery config in encrypted backup files; local `.env` overlay via `scripts/backup/load-config.sh`
-- Canonical root environment values live in the root `.env` with standard variable names; managed remote resource values use the `sskobar_` prefix where appropriate
+- Canonical root environment values live in the root `.env` with standard variable names; managed remote resource values use the `awcms-sskkobar` naming family where appropriate
 - PAT-based GitLab mirror flow for code backup and recovery
 
 ## Backup Schedule
@@ -33,9 +33,9 @@ flowchart LR
 
 | Resource | Location | Notes |
 |----------|----------|-------|
-| D1 Backups | `awcms-micro-backups/backups/db/backup-YYYYMMDD-HHMMSS.sql.enc` | Encrypted SQL dump |
+| D1 Backups | `awcms-sskkobar-r2backup/backups/db/backup-YYYYMMDD-HHMMSS.sql.enc` | Encrypted SQL dump |
 | Code Mirror | `gitlab.com:ahliweb/awcms-micro.git` | Full repository mirror |
-| R2 Media | `awcms-micro-media` | Original files |
+| R2 Media | `awcms-sskkobar-r2` | Original files |
 
 ## Restore Procedures
 
@@ -43,12 +43,12 @@ flowchart LR
 
 1. **Identify backup**: List available backups in R2:
    ```bash
-   wrangler r2 object list awcms-micro-backups --prefix "backups/db/" --remote
+   wrangler r2 object list awcms-sskkobar-r2backup --prefix "backups/db/" --remote
    ```
 
 2. **Download backup**:
    ```bash
-   wrangler r2 object get awcms-micro-backups/backups/db/backup-YYYYMMDD-HHMMSS.sql.enc --remote --file /tmp/backup.sql.enc
+   wrangler r2 object get awcms-sskkobar-r2backup/backups/db/backup-YYYYMMDD-HHMMSS.sql.enc --remote --file /tmp/backup.sql.enc
    ```
 
 3. **Decrypt backup**:
@@ -61,7 +61,7 @@ flowchart LR
 
 4. **Restore to D1**:
    ```bash
-   wrangler d1 execute awcms-micro-d1 --remote --file /tmp/backup.sql
+   wrangler d1 execute awcms-sskkobar-d1 --remote --file /tmp/backup.sql
    ```
 
 5. **Rebuild FTS5 indexes** (if applicable):
@@ -190,8 +190,8 @@ Verify: `SELECT COUNT(*) FROM _emdash_migrations;` should return 39.
 The `wrangler d1 export` command fails when FTS5 virtual tables are present. Workaround:
 ```bash
 # Export only non-FTS tables
-TABLES=$(wrangler d1 execute awcms-micro-d1 --remote --command "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE '_emdash_fts_%' ORDER BY name;" | jq -r '.[0].results[].name' | tr '\n' ' ')
-wrangler d1 export awcms-micro-d1 --remote --output backup.sql $(echo $TABLES | sed 's/ / --table /g' | sed 's/^/--table /') -y
+TABLES=$(wrangler d1 execute awcms-sskkobar-d1 --remote --command "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE '_emdash_fts_%' ORDER BY name;" | jq -r '.[0].results[].name' | tr '\n' ' ')
+wrangler d1 export awcms-sskkobar-d1 --remote --output backup.sql $(echo $TABLES | sed 's/ / --table /g' | sed 's/^/--table /') -y
 ```
 
 ### R2 Upload Fails

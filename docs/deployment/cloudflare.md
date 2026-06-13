@@ -15,13 +15,17 @@ flowchart LR
     W --> R[R2 media bucket]
     W --> K[KV session namespace]
     W --> I[Cloudflare Images binding]
-    O[Operator root .env\nstandard names plus sskobar_ resource values] --> G[GitHub and local wrangler setup]
+    O[Operator root .env\nstandard names plus awcms-sskkobar resource values] --> G[GitHub and local wrangler setup]
     G --> W
 ```
 
 - Base domain: `awcms-micro.ahlikoding.com`
 - Storage domain: `awcms-micro-s3.ahlikoding.com`
-- D1 database name: `awcms-micro-d1`
+- Template identifier: `awcms-sskkobar`
+- Worker name: `awcms-sskkobar-worker`
+- D1 database name: `awcms-sskkobar-d1`
+- R2 media bucket name: `awcms-sskkobar-r2`
+- R2 backup bucket name: `awcms-sskkobar-r2backup`
 
 Do not commit tokens, secrets, or private credentials. This repository's reference Cloudflare template may commit non-secret resource identifiers such as D1 and KV binding IDs when they are part of the checked-in example deployment shape.
 
@@ -66,7 +70,7 @@ Do not commit tokens, secrets, or private credentials. This repository's referen
 
 Keep real values in Cloudflare secrets, CI secrets, or local operator environment files.
 
-For this repository, the canonical local source is the root `.env` file. Keep standard variable names, but use `sskobar_` for managed Cloudflare resource values where the workspace owns the naming. Mirror the production-facing values into GitHub secrets and variables before deployment.
+For this repository, the canonical local source is the root `.env` file. Keep standard variable names, but use the agreed `awcms-sskkobar` resource names where the workspace owns the naming. Mirror the production-facing values into GitHub secrets and variables before deployment.
 
 Suggested categories:
 

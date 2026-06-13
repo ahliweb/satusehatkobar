@@ -2,14 +2,14 @@
 
 ## Purpose
 
-This workflow gives DBeaver a local SQLite file that mirrors the production Cloudflare D1 database for `awcms-micro-d1`.
+This workflow gives DBeaver a local SQLite file that mirrors the production Cloudflare D1 database for `awcms-sskkobar-d1`.
 
 It is a limited two-way sync model, not a live remote connection.
 
 ## How It Works
 
 - Production D1 is exported with `wrangler d1 export --remote`.
-- The export is loaded into a local SQLite mirror at `awcmsmicro-dev/.local/d1-mirror/awcms-micro-d1.dbeaver.sqlite`.
+- The export is loaded into a local SQLite mirror at `awcmsmicro-dev/.local/d1-mirror/awcms-sskkobar-d1.dbeaver.sqlite`.
 - DBeaver connects to that SQLite file.
 - `pnpm d1:mirror:sync` merges local mirror edits back to D1 and refreshes the mirror.
 - `pnpm d1:mirror:reset` discards the local mirror and rebuilds it from production.
@@ -18,7 +18,7 @@ It is a limited two-way sync model, not a live remote connection.
 
 - The script reads the parent repository `.env` automatically when present.
 - It maps `CLOUDFLARE_WORKER_D1_DATABASE_ID` to the D1 mirror workflow when needed.
-- `wrangler` must already be authenticated to the Cloudflare account that owns `awcms-micro-d1`.
+- `wrangler` must already be authenticated to the Cloudflare account that owns `awcms-sskkobar-d1`.
 - The account/token needs D1 query access.
 - If `wrangler` returns `SQLITE_AUTH`, the local mirror cannot be refreshed until the account access issue is resolved.
 
@@ -41,7 +41,7 @@ Only tables that meet all of these rules are synced:
 
 1. Run `pnpm d1:mirror:sync` once to create the mirror.
 2. In DBeaver, create a new SQLite connection.
-3. Point it at `awcmsmicro-dev/.local/d1-mirror/awcms-micro-d1.dbeaver.sqlite`.
+3. Point it at `awcmsmicro-dev/.local/d1-mirror/awcms-sskkobar-d1.dbeaver.sqlite`.
 4. Disconnect or close the DBeaver connection before running `pnpm d1:mirror:sync`.
 5. After editing rows in DBeaver, run `pnpm d1:mirror:sync` again.
 

@@ -2,7 +2,7 @@
 
 This repository now uses the root `.env` file as the canonical operator-managed configuration source for the `satusehatkobar` workspace.
 
-The variable names stay standard and readable. The `sskobar_` prefix is applied to managed remote-service resource values where this workspace owns the resource naming, such as Worker names, R2 bucket names, and D1 database names.
+The variable names stay standard and readable. The `awcms-sskkobar` naming family is applied to managed remote-service resource values where this workspace owns the resource naming, such as the template identifier, Worker name, R2 bucket names, and D1 database name.
 
 ## Canonical Model
 
@@ -19,6 +19,7 @@ flowchart TD
 ## What The Root `.env` Owns
 
 - workspace identity and environment label
+- canonical template identifier
 - local development URLs
 - production URLs
 - Cloudflare account credentials and Worker metadata
@@ -44,7 +45,7 @@ That script updates the tracked root `.dev.vars` file with non-secret local Clou
 Use one naming model for both environments:
 
 - standard variable names carry both local and production configuration
-- remote resource names under workspace control use the `sskobar_` prefix in their values
+- remote resource names under workspace control use the `awcms-sskkobar` naming family in their values
 - backup defaults point at the production D1 and R2 targets unless explicitly overridden
 
 ```mermaid
@@ -104,5 +105,5 @@ Treat the root `.env` as the only editable source of truth for root-managed oper
 ## Naming Rule
 
 - variable names remain standard, for example `CLOUDFLARE_WORKER_NAME`
-- remote resource values owned by this workspace should use the `sskobar_` prefix where valid and appropriate, for example `sskobar_awcms-micro-media`
+- remote resource values owned by this workspace should use the agreed `awcms-sskkobar` naming family where appropriate, for example `awcms-sskkobar-r2`
 - values that reference existing external systems you do not control, such as `git@github.com:ahliweb/awcms-micro.git`, should remain unchanged

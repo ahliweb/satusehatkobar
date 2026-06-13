@@ -25,9 +25,12 @@ It keeps EmDash core untouched and lives only inside `awcmsmicro-dev/templates/a
 
 This template is prepared for these logical values:
 
+- canonical template identifier: `awcms-sskkobar`
 - base domain: `awcms-micro.ahlikoding.com`
 - storage domain: `awcms-micro-s3.ahlikoding.com`
-- D1 database name: `awcms-micro-d1`
+- Worker name: `awcms-sskkobar-worker`
+- D1 database name: `awcms-sskkobar-d1`
+- R2 backup bucket name: `awcms-sskkobar-r2backup`
 - R2 media bucket binding: `MEDIA`
 - Worker Loader binding: `LOADER`
 
@@ -60,7 +63,7 @@ From this template directory:
 
 ## Migration And D1 Preparation
 
-Use `wrangler d1 create awcms-micro-d1` if you need a fresh D1 database.
+Use `wrangler d1 create awcms-sskkobar-d1` if you need a fresh D1 database.
 
 Then confirm `wrangler.jsonc` points at the intended D1 database id and session namespace id before real deployment.
 
@@ -68,7 +71,7 @@ Do not commit Cloudflare tokens, secret values, or private credentials.
 
 ## Deploy
 
-1. Confirm `wrangler.jsonc` still points to `awcms-micro.ahlikoding.com` and `awcms-micro-d1`.
+1. Confirm `wrangler.jsonc` still points to `awcms-micro.ahlikoding.com` and `awcms-sskkobar-d1`.
 2. Confirm the committed D1 `database_id` and `SESSION` namespace id still match the intended deployment target.
 3. Confirm the `MEDIA` bucket exists.
 4. Run `pnpm build`.
@@ -102,6 +105,7 @@ For the implementation-level PRD, see `docs/TECHNICAL_PRD.md`.
 ## Naming Guidance
 
 - package name: `@awcms-micro/template-default-cloudflare`
+- canonical template identifier: `awcms-sskkobar`
 - recommended local folder example: `templates/awcms-micro-default-cloudflare/`
 - related example plugin packages: `@awcms-micro/plugin-sikesra`, `@awcms-micro/plugin-gallery`
 

@@ -54,13 +54,13 @@ GITHUB_ACTION_PNPM_VERSION="11.1.3"
 # Cloudflare R2 (Backup Storage)
 # ---------------------------------------------------------------------------
 # R2 bucket for storing encrypted backups (DB, env, dotfiles).
-R2_BUCKET_NAME="awcms-micro-backups"
+R2_BUCKET_NAME="awcms-sskkobar-r2backup"
 R2_REGION="auto"
 
 # ---------------------------------------------------------------------------
-# Cloudflare Deployment (Worker: awcms-micro)
+# Cloudflare Deployment (Worker: awcms-sskkobar-worker)
 # ---------------------------------------------------------------------------
-CLOUDFLARE_WORKER_NAME="awcms-micro"
+CLOUDFLARE_WORKER_NAME="awcms-sskkobar-worker"
 CLOUDFLARE_WORKER_MAIN="./src/worker.ts"
 CLOUDFLARE_WORKER_COMPATIBILITY_DATE="2026-05-14"
 CLOUDFLARE_WORKER_COMPATIBILITY_FLAGS=("nodejs_compat")
@@ -71,11 +71,11 @@ CLOUDFLARE_WORKER_CUSTOM_DOMAIN=false
 CLOUDFLARE_WORKER_OBSERVABILITY=true
 
 CLOUDFLARE_WORKER_D1_BINDING="DB"
-CLOUDFLARE_WORKER_D1_DATABASE_NAME="awcms-micro-d1"
+CLOUDFLARE_WORKER_D1_DATABASE_NAME="awcms-sskkobar-d1"
 CLOUDFLARE_WORKER_D1_DATABASE_ID="df3281e0-4066-4da8-8911-1a0ed60a4562"
 
 CLOUDFLARE_WORKER_R2_BINDING="MEDIA"
-CLOUDFLARE_WORKER_R2_BUCKET_NAME="awcms-micro-media"
+CLOUDFLARE_WORKER_R2_BUCKET_NAME="awcms-sskkobar-r2"
 
 CLOUDFLARE_WORKER_KV_BINDING="SESSION"
 CLOUDFLARE_WORKER_KV_NAMESPACE_ID="7382419ae0194a10949290c9e69d0840"
@@ -94,7 +94,7 @@ CLOUDFLARE_ACCOUNT_ID="your-cloudflare-account-id"
 # Cloudflare D1 (Database)
 # ---------------------------------------------------------------------------
 # D1 database name to backup.
-D1_DATABASE_NAME="awcms-micro-db"
+D1_DATABASE_NAME="awcms-sskkobar-d1"
 
 # Backup retention - how many backups to keep
 D1_BACKUP_KEEP_COUNT=7

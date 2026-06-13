@@ -44,7 +44,7 @@ Hidden root files such as `.gitignore` and local-only `.env` support the parent 
 The root `.env` is the canonical operator-managed configuration source for this workspace.
 
 - keep standard variable names in `.env`
-- use the `sskobar_` prefix in remote resource values that this workspace owns, such as Worker names, R2 buckets, and D1 database names
+- use the canonical `awcms-sskkobar` naming family for workspace-owned remote resource values, including the template identifier, Worker name, R2 buckets, backup bucket, and D1 database name
 - keep real secrets only in local `.env`, encrypted backup config, or platform secret stores
 - regenerate derived local runtime values with `bash scripts/sync-sskobar-env.sh`
 - let `scripts/backup/load-config.sh` read the canonical `.env` directly for backup and mirror operations

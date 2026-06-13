@@ -2,7 +2,7 @@
 
 ## Intended Example Resource
 
-- Database name: `awcms-micro-d1`
+- Database name: `awcms-sskkobar-d1`
 
 ## Purpose
 
