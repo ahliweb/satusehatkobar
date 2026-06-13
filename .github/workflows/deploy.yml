@@ -14,6 +14,7 @@ jobs:
     env:
       NODE_VERSION: ${{ vars.GITHUB_ACTION_NODE_VERSION || '22' }}
       PNPM_VERSION: ${{ vars.GITHUB_ACTION_PNPM_VERSION || '11.1.3' }}
+      TEMPLATE_NAME: ${{ vars.GITHUB_ACTION_TEMPLATE_NAME || 'awcms-sskkobar' }}
       WORKER_PACKAGE: ${{ vars.GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE || '@awcms-micro/template-default-cloudflare' }}
 
     steps:
@@ -37,6 +38,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
         working-directory: awcmsmicro-dev
+
+      - name: Validate Canonical Template Configuration
+        run: |
+          echo "Canonical template: $TEMPLATE_NAME"
+          echo "Worker package: $WORKER_PACKAGE"
+          bash scripts/validate-sskobar-config.sh
 
       - name: Build packages
         run: pnpm build

@@ -190,6 +190,7 @@ These must match your `.backup-config` values:
 | `GITHUB_ACTION_MIRROR_WORKFLOW`         | Mirror workflow filename       |
 | `GITHUB_ACTION_DEPLOY_BRANCH`           | Deploy trigger branch          |
 | `GITHUB_ACTION_BACKUP_CRON`             | Backup cron schedule           |
+| `GITHUB_ACTION_TEMPLATE_NAME`           | Canonical deployment identifier |
 | `GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE` | Build target package           |
 | `GITHUB_ACTION_NODE_VERSION`            | Node version used by workflows |
 | `GITHUB_ACTION_PNPM_VERSION`            | pnpm version used by workflows |
@@ -204,6 +205,7 @@ Set these as repository variables (not secrets) so workflows can stay aligned wi
 | `GITLAB_REPO_NAME`                      | `awcms-micro`                              |
 | `GITHUB_ACTION_NODE_VERSION`            | `22`                                       |
 | `GITHUB_ACTION_PNPM_VERSION`            | `11.1.3`                                   |
+| `GITHUB_ACTION_TEMPLATE_NAME`           | `awcms-sskkobar`                           |
 | `GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE` | `@awcms-micro/template-default-cloudflare` |
 
 ## Security Model

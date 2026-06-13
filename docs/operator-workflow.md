@@ -66,6 +66,7 @@ node awcmsmicro-dev/.github/scripts/awcms-version.mjs status
 
 ```bash
 bash scripts/sync-sskobar-env.sh
+bash scripts/validate-sskobar-config.sh
 ```
 
 ## Decision Rules During Work

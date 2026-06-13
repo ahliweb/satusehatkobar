@@ -40,6 +40,12 @@ That script updates the tracked root `.dev.vars` file with non-secret local Clou
 
 `scripts/backup/load-config.sh` reads the same canonical `.env` and exports the values needed by the current backup and mirror scripts.
 
+Validate the canonical naming model after any resource-name change:
+
+```bash
+bash scripts/validate-sskobar-config.sh
+```
+
 ## Local And Production Consistency
 
 Use one naming model for both environments:
@@ -96,6 +102,7 @@ The repository workflows still consume their established GitHub secret and varia
 | `GITLAB_REPO_NAME` | `GITLAB_REPO_NAME` variable or secret |
 | `GITHUB_ACTION_NODE_VERSION` | `GITHUB_ACTION_NODE_VERSION` variable |
 | `GITHUB_ACTION_PNPM_VERSION` | `GITHUB_ACTION_PNPM_VERSION` variable |
+| `GITHUB_ACTION_TEMPLATE_NAME` | `GITHUB_ACTION_TEMPLATE_NAME` variable |
 | `GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE` | `GITHUB_ACTION_WORKER_TEMPLATE_PACKAGE` variable |
 
 ## Operational Rule

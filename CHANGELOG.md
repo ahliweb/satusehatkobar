@@ -1,5 +1,8 @@
 # AWCMS-Micro Changelog
 
+## 0.1.4 - 2026-06-13
+
+- Adds canonical `awcms-sskkobar` configuration validation and teaches the deploy workflow to read the canonical template identifier alongside the template package target.
 ## 0.1.3 - 2026-06-13
 
 - Aligns the root workspace environment, Cloudflare deployment defaults, backup resource names, and operational documentation with the canonical `awcms-sskkobar` template and resource identifiers.
@@ -16,7 +19,7 @@
 ## Workspace Snapshot - 2026-06-13
 
 - EmDash upstream: `4075652a360e51cd1597e2b595df75a6a1c05e7a` from `emdash-latest/`
-- Root version: `0.1.3`
+- Root version: `0.1.4`
 
 ### Plugins
 

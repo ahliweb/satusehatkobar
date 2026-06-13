@@ -105,6 +105,7 @@ Exception:
 - `bash scripts/update-awcmsmicro-dev.sh`
 - `bash scripts/validate-awcmsmicro-boundaries.sh`
 - `bash scripts/validate-awcmsmicro-dev.sh`
+- `bash scripts/validate-sskobar-config.sh`
 - `bash scripts/sync-and-validate-awcmsmicro-dev.sh`
 - `bash scripts/sync-sskobar-env.sh`
 - `node awcmsmicro-dev/.github/scripts/awcms-version.mjs status`
