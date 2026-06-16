@@ -138,7 +138,8 @@ Work is tracked as self-contained GitHub issues sized for a junior AI model with
 - `docs/prd/25.AI_READY_ISSUE_PLAYBOOK_AND_INDEX.md` — issue-authoring standard + the full backlog coverage index (item → issue).
 - Pinned issue **#11 `[CAPSULE]`** — shared invariants every issue references.
 - Issue templates: `.github/ISSUE_TEMPLATE/feature-ai-ready.md`, `ui-ux-ai-ready.md`. Milestones `Sprint 0`–`Sprint 6`.
-- Per-part execution skills: `.opencode/skills/sskobar-{plugin-execution,data-d1,api-rbac,ui-admin}`.
+- Per-part execution skills (`.opencode/skills/`): `sskobar-plugin-execution`, `-data-d1`, `-api-rbac`, `-ui-admin`, `-approval-workflow`, `-documents-pdf`, `-evidence-journal`, `-dashboard-spm`.
+- The full MVP backlog is already filed as issues **#11–#93** (capsule, UI/UX foundation, 12 epics, 63 items). Execution order + MVP guardrails: doc 25 §7.
 
 ## Maintenance Scripts
 
