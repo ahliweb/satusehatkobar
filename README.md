@@ -124,12 +124,21 @@ Exception:
 
 ## Product Specification (Satu Sehat Kobar)
 
-The Satu Sehat Kobar product is specified in `docs/prd/` (24 documents, Bahasa Indonesia). That package describes the product built **on top of** this AWCMS-Micro workspace as Native EmDash plugins and the `awcms-sskobar-cloudflare` template — it does not change the maintenance rules above.
+The Satu Sehat Kobar product is specified in `docs/prd/` (25 documents, Bahasa Indonesia). That package describes the product built **on top of** this AWCMS-Micro workspace as Native EmDash plugins and the `awcms-sskobar-cloudflare` template — it does not change the maintenance rules above.
 
 - `docs/prd/20.Master Document Index and Implementation Guide.docx.md` — entry point and reading order for the whole PRD package.
 - `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` — the bridge between the PRD and this workspace: plugin format (Native), package naming (`awcms-micro-<key>` / `@awcms-micro/plugin-<key>`), persistence model (default: direct D1 via `ctx.db`; `ctx.kv` for cache), Cloudflare bindings, and the mapping from each PRD document to its implementation surface in `awcmsmicro-dev/`.
 
 Plugin data persists directly in Cloudflare D1 via `ctx.db` (Kysely), with each plugin owning its idempotent schema migrations (decision DEC-019 in `docs/prd/12`). Read `docs/prd/24` before turning any PRD requirement into plugin, schema, or migration code.
+
+### Implementation via AI-ready issues
+
+Work is tracked as self-contained GitHub issues sized for a junior AI model with a limited token budget. Each `ai-ready` issue embeds a Context Capsule and cites only 1–2 doc sections.
+
+- `docs/prd/25.AI_READY_ISSUE_PLAYBOOK_AND_INDEX.md` — issue-authoring standard + the full backlog coverage index (item → issue).
+- Pinned issue **#11 `[CAPSULE]`** — shared invariants every issue references.
+- Issue templates: `.github/ISSUE_TEMPLATE/feature-ai-ready.md`, `ui-ux-ai-ready.md`. Milestones `Sprint 0`–`Sprint 6`.
+- Per-part execution skills: `.opencode/skills/sskobar-{plugin-execution,data-d1,api-rbac,ui-admin}`.
 
 ## Maintenance Scripts
 

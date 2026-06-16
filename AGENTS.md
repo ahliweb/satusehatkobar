@@ -52,7 +52,8 @@ Within this parent workspace:
 - Before turning any PRD requirement into code, read `docs/prd/20.Master Document Index and Implementation Guide.docx.md` (entry point) and `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` (workspace bridge).
 - SSK plugins use the **Native** format (React admin + direct data access), named `awcms-micro-<key>` (npm `@awcms-micro/plugin-<key>`), registered in the template `astro.config.mjs` `plugins: []`. Follow the existing `awcms-micro-sikesra` plugin as the reference pattern.
 - Persistence default is **direct Cloudflare D1** via `ctx.db` (Kysely) — `docs/prd/04.DATABASE_MVP_SCHEMA.docx.md` is the physical schema. EmDash has no plugin migration runner, so each plugin owns its idempotent schema migrations (`<prefix>_migrations`, run in `install`/`activate`). `ctx.kv` is for cache only; using storage collections as a domain store is an exception. Decision: DEC-019 in `docs/prd/12`; detail: `docs/prd/24` §4.4.
-- Use the workspace skills as authoritative guides: `awcmsmicro-dev/skills/creating-plugins` and `awcmsmicro-dev/skills/building-emdash-site`.
+- Use the workspace skills as authoritative guides: `awcmsmicro-dev/skills/creating-plugins` and `awcmsmicro-dev/skills/building-emdash-site`, plus the SSK per-part execution skills `.opencode/skills/sskobar-{plugin-execution,data-d1,api-rbac,ui-admin}`.
+- Work is tracked as **AI-ready GitHub issues** (self-contained, sized for a junior AI with limited tokens). Standard + full coverage index: `docs/prd/25.AI_READY_ISSUE_PLAYBOOK_AND_INDEX.md`. Every `ai-ready` issue references pinned issue **#11 `[CAPSULE]`** and cites only 1–2 doc sections. Templates in `.github/ISSUE_TEMPLATE/`; milestones `Sprint 0`–`Sprint 6`. When asked to create the next batch of issues, follow doc 25 §7.
 
 ## Root Documentation
 

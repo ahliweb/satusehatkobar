@@ -79,7 +79,7 @@ Documents in this folder define:
 - upstream sync status and divergence tracking
 - deployment and security baselines
 
-`docs/prd/` is a distinct sub-package: the Satu Sehat Kobar product specification (24 documents). It describes the product built on top of `awcmsmicro-dev/` as Native EmDash plugins and the `awcms-sskobar-cloudflare` template. Start from `docs/prd/20.Master Document Index and Implementation Guide.docx.md`; `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` bridges that spec to this workspace.
+`docs/prd/` is a distinct sub-package: the Satu Sehat Kobar product specification (25 documents). It describes the product built on top of `awcmsmicro-dev/` as Native EmDash plugins and the `awcms-sskobar-cloudflare` template. Start from `docs/prd/20.Master Document Index and Implementation Guide.docx.md`; `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` bridges that spec to this workspace.
 
 ### `scripts/`
 
