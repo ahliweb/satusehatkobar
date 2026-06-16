@@ -138,8 +138,8 @@ Work is tracked as self-contained GitHub issues sized for a junior AI model with
 - `docs/prd/25.AI_READY_ISSUE_PLAYBOOK_AND_INDEX.md` — issue-authoring standard + the full backlog coverage index (item → issue).
 - Pinned issue **#11 `[CAPSULE]`** — shared invariants every issue references.
 - Issue templates: `.github/ISSUE_TEMPLATE/feature-ai-ready.md`, `ui-ux-ai-ready.md`. Milestones `Sprint 0`–`Sprint 6`.
-- Per-part execution skills (`.opencode/skills/`): `sskobar-plugin-execution`, `-data-d1`, `-api-rbac`, `-ui-admin`, `-approval-workflow`, `-documents-pdf`, `-evidence-journal`, `-dashboard-spm`, `-master-data`, `-integration-backend`.
-- The full MVP backlog is already filed as issues **#11–#118** (capsule, UI/UX foundation, 14 epics incl. Master Data Foundation and Backend & Integration Foundation, 63 backlog items + 14 master-data + 9 backend/integration items). Execution order + MVP guardrails: doc 25 §7. External integrations (TTE/SRIKANDI/SIMPEG/SIPD/WA/email) stay Phase 2 — MVP builds only the integration foundation/extension points.
+- Per-part execution skills (`.opencode/skills/`): `sskobar-plugin-execution`, `-data-d1`, `-api-rbac`, `-ui-admin`, `-approval-workflow`, `-documents-pdf`, `-evidence-journal`, `-dashboard-spm`, `-master-data`, `-integration-backend`, `-e2e-release`.
+- The full MVP backlog is filed as issues **#11–#127** covering the whole functional app: UI/UX foundation, 11 functional epics, Master Data Foundation, Backend & Integration Foundation, Admin Console (operate the app), and E2E/UAT/Release (ship it). Execution order + MVP guardrails: doc 25 §7. External integrations (TTE/SRIKANDI/SIMPEG/SIPD/WA/email) stay Phase 2 — MVP builds only the integration foundation/extension points.
 
 ## Maintenance Scripts
 
