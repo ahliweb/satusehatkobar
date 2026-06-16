@@ -127,9 +127,9 @@ Exception:
 The Satu Sehat Kobar product is specified in `docs/prd/` (24 documents, Bahasa Indonesia). That package describes the product built **on top of** this AWCMS-Micro workspace as Native EmDash plugins and the `awcms-sskobar-cloudflare` template — it does not change the maintenance rules above.
 
 - `docs/prd/20.Master Document Index and Implementation Guide.docx.md` — entry point and reading order for the whole PRD package.
-- `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` — the bridge between the PRD and this workspace: plugin format (Native), package naming (`awcms-micro-<key>` / `@awcms-micro/plugin-<key>`), persistence model (`ctx.storage` / `ctx.kv` vs raw D1), Cloudflare bindings, and the mapping from each PRD document to its implementation surface in `awcmsmicro-dev/`.
+- `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` — the bridge between the PRD and this workspace: plugin format (Native), package naming (`awcms-micro-<key>` / `@awcms-micro/plugin-<key>`), persistence model (default: direct D1 via `ctx.db`; `ctx.kv` for cache), Cloudflare bindings, and the mapping from each PRD document to its implementation surface in `awcmsmicro-dev/`.
 
-Read `docs/prd/24` before turning any PRD requirement into plugin, schema, or migration code so implementation follows the EmDash runtime rather than the logical schema alone.
+Plugin data persists directly in Cloudflare D1 via `ctx.db` (Kysely), with each plugin owning its idempotent schema migrations (decision DEC-019 in `docs/prd/12`). Read `docs/prd/24` before turning any PRD requirement into plugin, schema, or migration code.
 
 ## Maintenance Scripts
 

@@ -51,7 +51,7 @@ Within this parent workspace:
 - The Satu Sehat Kobar product spec lives in `docs/prd/` and is implemented as Native EmDash plugins plus the `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/` template — not by forking EmDash core.
 - Before turning any PRD requirement into code, read `docs/prd/20.Master Document Index and Implementation Guide.docx.md` (entry point) and `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` (workspace bridge).
 - SSK plugins use the **Native** format (React admin + direct data access), named `awcms-micro-<key>` (npm `@awcms-micro/plugin-<key>`), registered in the template `astro.config.mjs` `plugins: []`. Follow the existing `awcms-micro-sikesra` plugin as the reference pattern.
-- Persistence default is the EmDash runtime (`ctx.storage` collections + `ctx.kv`), not hand-written SQL migrations. Treat `docs/prd/04.DATABASE_MVP_SCHEMA.docx.md` as the logical schema; record any decision to use raw D1 in `docs/prd/12.CHANGE_CONTROL_AND_DECISION_LOG.docx.md`. See `docs/prd/24` §4.
+- Persistence default is **direct Cloudflare D1** via `ctx.db` (Kysely) — `docs/prd/04.DATABASE_MVP_SCHEMA.docx.md` is the physical schema. EmDash has no plugin migration runner, so each plugin owns its idempotent schema migrations (`<prefix>_migrations`, run in `install`/`activate`). `ctx.kv` is for cache only; using storage collections as a domain store is an exception. Decision: DEC-019 in `docs/prd/12`; detail: `docs/prd/24` §4.4.
 - Use the workspace skills as authoritative guides: `awcmsmicro-dev/skills/creating-plugins` and `awcmsmicro-dev/skills/building-emdash-site`.
 
 ## Root Documentation
