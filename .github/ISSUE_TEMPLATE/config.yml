@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: AI-Ready Issue Playbook & Coverage Index
+    url: https://github.com/ahliweb/satusehatkobar/blob/main/docs/prd/25.AI_READY_ISSUE_PLAYBOOK_AND_INDEX.md
+    about: Standard for writing self-contained, junior-AI-executable issues + the full backlog coverage index.
+  - name: Technical Implementation References (PRD ↔ workspace bridge)
+    url: https://github.com/ahliweb/satusehatkobar/blob/main/docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md
+    about: Plugin format, naming, persistence (direct D1 via ctx.db), and Cloudflare bindings. Read §4 before coding.
