@@ -16,6 +16,7 @@ Analyze `https://github.com/emdash-cms/emdash`, then update `https://github.com/
 - Keep the root maintenance changelog and workspace snapshot current when the EmDash revision or workspace package inventory changes.
 - Keep AWCMS-Micro example work isolated in the approved protected paths inside `awcmsmicro-dev/`.
 - Implement new AWCMS-Micro product behavior through plugins and templates, with docs, demos, and E2E coverage as supporting layers.
+- For Satu Sehat Kobar product work, the specification is `docs/prd/`. Read `docs/prd/20.Master Document Index and Implementation Guide.docx.md` and `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` first: SSK plugins are Native (`awcms-micro-<key>`), registered in the `awcms-sskobar-cloudflare` template, and persist via `ctx.storage`/`ctx.kv` (treat `docs/prd/04` as the logical schema).
 
 ## Execution Strategy
 

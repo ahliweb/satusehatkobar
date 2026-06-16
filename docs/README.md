@@ -4,6 +4,7 @@ This folder contains the root-level technical documentation for the AWCMS-Micro 
 
 ## Documents
 
+- `prd/`: Satu Sehat Kobar product specification package (24 documents). Entry point: `prd/20.Master Document Index and Implementation Guide.docx.md`; PRD-to-workspace bridge: `prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md`
 - `repository-structure.md`: root folder contract, responsibilities, and boundaries
 - `synchronization-workflow.md`: operational workflow for updating `emdash-latest/` and rebuilding `awcmsmicro-dev/`
 - `implementation-instructions.md`: implementation mandate, constraints, and task-splitting guidance

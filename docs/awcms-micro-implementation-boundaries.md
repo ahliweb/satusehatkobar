@@ -89,6 +89,8 @@ When adding a new AWCMS-Micro plugin, template, demo, docs area, or test boundar
 4. run `bash scripts/update-awcmsmicro-dev.sh`
 5. run `bash scripts/validate-awcmsmicro-boundaries.sh`
 
+Each new Satu Sehat Kobar product plugin (`packages/plugins/awcms-micro-<key>`) is exactly this case: add its path here and to `scripts/awcmsmicro-dev-protected-paths.txt` before the next rebuild, otherwise it is deleted by `rsync --delete`. See `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` §5 for the PRD-to-path mapping.
+
 Do not preserve upstream overrides by adding random paths to the allowlist.
 
 Do not create new shared AWCMS-Micro product code outside plugin or template boundaries unless the repository rules are intentionally changed first.
