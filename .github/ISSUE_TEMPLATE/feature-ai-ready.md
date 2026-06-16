@@ -19,7 +19,7 @@ See docs/prd/25.AI_READY_ISSUE_PLAYBOOK_AND_INDEX.md for the authoring rules.
 - API envelope: `{ data, meta }` / `{ data, pagination, meta }` / `{ error: { code, message, details }, meta }`. Error messages in **Bahasa Indonesia**. Handler order: auth → RBAC → ABAC → validation → service → audit → envelope. Handlers thin; logic in services.
 - Every mutation writes an audit event. Enforce RBAC/ABAC in the **service layer**, never UI-only.
 - Bindings: D1 `DB`, R2 `MEDIA`, KV `SESSION`, Images `IMAGES`. Register the plugin in `templates/awcms-sskobar-cloudflare/astro.config.mjs` `plugins:[]` + `package.json`, and add its path to `scripts/awcmsmicro-dev-protected-paths.txt` + `docs/awcms-micro-implementation-boundaries.md`.
-- Full invariants: pinned issue **#CAPSULE** and `docs/prd/24` §4. Skill: `awcmsmicro-dev/skills/creating-plugins`.
+- Full invariants: pinned issue **#11** (`[CAPSULE]`) and `docs/prd/24` §4. Skill: `awcmsmicro-dev/skills/creating-plugins`.
 
 > **Token budget:** read ONLY the doc sections cited in §3 + `docs/prd/24` §4. Do NOT open other PRD files.
 

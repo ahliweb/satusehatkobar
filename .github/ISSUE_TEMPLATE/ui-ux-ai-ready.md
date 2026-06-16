@@ -11,7 +11,7 @@ labels: ["feat", "ui-ux", "ai-ready"]
 - **Kumo semantic tokens** for all colors/spacing — never hardcode light-only values; dark + light must both stay readable.
 - **Mobile-first** (usable at 375px), max 3 clicks for a primary action, visible loading/success/error states, contrast ≥ 4.5:1, keyboard navigable, screen-reader friendly. (PRD §9.1)
 - Each plugin's admin menu is its own collapsible group, placed at the top below Dashboard (AGENTS root policy).
-- Full invariants: pinned issue **#CAPSULE** and `docs/prd/24` §4. Skill: `awcmsmicro-dev/skills/building-emdash-site`.
+- Full invariants: pinned issue **#11** (`[CAPSULE]`) and `docs/prd/24` §4. Skill: `awcmsmicro-dev/skills/building-emdash-site`.
 
 > **Token budget:** read ONLY PRD `§9` (UI/UX) + the section cited in §3. Do NOT open other PRD files.
 
