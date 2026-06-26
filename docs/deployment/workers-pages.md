@@ -6,7 +6,7 @@ Use Cloudflare Workers for EmDash-compatible server output when D1 and R2 bindin
 
 ## Example Domain
 
-- `awcms-micro.ahlikoding.com`
+- `awcms-sskobar.ahlikoding.com`
 
 ## Notes
 

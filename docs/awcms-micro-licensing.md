@@ -8,7 +8,7 @@
 ## AWCMS-Micro Example Packages
 
 - Example plugins and example templates use the AW Non-Commercial License 1.0.
-- Each AWCMS-specific package includes a local `LICENSE.md` copy of the same text.
+- Each AWCMS-specific package includes its own local `LICENSE.md` copy of the same text inside the package directory.
 - Package manifests point to that file with `SEE LICENSE IN LICENSE.md`.
 
 ## Registry Metadata

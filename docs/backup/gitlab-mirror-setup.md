@@ -2,8 +2,10 @@
 
 ## Prerequisites
 
-1. Create a private repository on GitLab named `awcms-micro`
+1. Create a private repository on GitLab for this workspace mirror (default local name: `awcms-sskobar`)
 2. Create a GitLab Personal Access Token (PAT) with `write_repository` scope
+
+The current root automation defaults `GITLAB_REPO_NAME` to `awcms-sskobar` in `scripts/sync-sskobar-env.sh`, so use that unless you intentionally choose a different mirror name.
 
 ## Setup Steps
 
@@ -18,7 +20,7 @@ Go to GitHub repo → Settings → Secrets and variables → Actions → New rep
 | Secret Name        | Value                |
 | ------------------ | -------------------- |
 | `GITLAB_USERNAME`  | Your GitLab username |
-| `GITLAB_REPO_NAME` | `awcms-micro`        |
+| `GITLAB_REPO_NAME` | `awcms-sskobar` (or your chosen mirror repo) |
 | `GITLAB_PAT`       | GitLab PAT token     |
 
 ### 3. Initial Push
@@ -26,7 +28,7 @@ Go to GitHub repo → Settings → Secrets and variables → Actions → New rep
 Do an initial push to create the repo on GitLab:
 
 ```bash
-git remote add gitlab "https://oauth2:${GITLAB_PAT}@gitlab.com/${GITLAB_USERNAME}/awcms-micro.git"
+git remote add gitlab "https://oauth2:${GITLAB_PAT}@gitlab.com/${GITLAB_USERNAME}/${GITLAB_REPO_NAME}.git"
 git push --all gitlab
 git push --tags gitlab
 ```
@@ -36,6 +38,8 @@ For local backup scripts, `scripts/backup/load-config.sh` safely reads encrypted
 ### 4. Verify
 
 After the next push to GitHub, check the Actions tab to see the mirror workflow run.
+
+Also review `.github/workflows/mirror-to-gitlab.yml`: the current workflow has a repository-slug guard and only runs when that condition is satisfied or intentionally updated.
 
 If the mirror variables or PAT are missing, the workflow now skips the mirror step instead of failing the push.
 

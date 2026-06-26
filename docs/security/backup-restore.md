@@ -18,7 +18,7 @@ flowchart LR
 - Backup retention: 7 most recent backups kept in R2
 - Mirror/recovery config in encrypted backup files; local `.env` overlay via `scripts/backup/load-config.sh`
 - Canonical root environment values live in the root `.env` with standard variable names; managed remote resource values use the `awcms-sskkobar` naming family where appropriate
-- PAT-based GitLab mirror flow for code backup and recovery
+- PAT-based GitLab mirror flow for code backup and recovery; GitHub Actions mirroring depends on the current `.github/workflows/mirror-to-gitlab.yml` repository guard
 
 ## Backup Schedule
 
@@ -26,7 +26,7 @@ flowchart LR
 |------|----------|---------|-----------|
 | D1 Database | Daily 2 AM UTC | Cron | 7 backups |
 | D1 Database | On push to main with migration changes | Path trigger | 7 backups |
-| Code | Every push to main | GitLab mirror | Permanent |
+| Code | On demand or on push when the mirror workflow is enabled for the current repo | GitLab mirror | Permanent |
 | R2 Media | Manual (as needed) | - | - |
 
 ## Backup Storage
@@ -34,7 +34,7 @@ flowchart LR
 | Resource | Location | Notes |
 |----------|----------|-------|
 | D1 Backups | `awcms-sskkobar-r2backup/backups/db/backup-YYYYMMDD-HHMMSS.sql.enc` | Encrypted SQL dump |
-| Code Mirror | `gitlab.com:ahliweb/awcms-micro.git` | Full repository mirror |
+| Code Mirror | `https://gitlab.com/<GITLAB_USERNAME>/<GITLAB_REPO_NAME>.git` | Full repository mirror; current local default repo name is `awcms-sskobar` unless overridden |
 | R2 Media | `awcms-sskkobar-r2` | Original files |
 
 ## Restore Procedures
@@ -124,8 +124,8 @@ Verify: `SELECT COUNT(*) FROM _emdash_migrations;` should return 39.
 
 1. **Clone from GitLab**:
    ```bash
-   git clone git@gitlab.com:ahliweb/awcms-micro.git
-   cd awcms-micro
+   git clone "https://gitlab.com/${GITLAB_USERNAME}/${GITLAB_REPO_NAME}.git"
+   cd "${GITLAB_REPO_NAME}"
    ```
 
 2. **Restore secrets**:
@@ -180,7 +180,7 @@ Verify: `SELECT COUNT(*) FROM _emdash_migrations;` should return 39.
 
 - [x] Documented backup schedule (above)
 - [x] GitHub workflows configured and tested
-- [ ] Restore test notes (run quarterly)
+- [x] Restore test notes documented; rerun quarterly
 - [x] Rollback decision owner: Repository Admin
 
 ## Troubleshooting

@@ -94,7 +94,7 @@ The strongest remaining hotspot is menu URL resolution in `packages/core/src/men
 
 ##### Evidence Collected
 
-Observed on `https://awcms-micro.ahlikoding.com` after downstream template cleanup and locale fixes:
+Observed on `https://awcms-sskobar.ahlikoding.com` after downstream template cleanup and locale fixes:
 
 - `/` commonly reports `db.count=23`
 - `/id` commonly reports `db.count=23`

@@ -26,8 +26,8 @@ It keeps EmDash core untouched and lives only inside `awcmsmicro-dev/templates/a
 This template is prepared for these logical values:
 
 - canonical template identifier: `awcms-sskkobar`
-- base domain: `awcms-micro.ahlikoding.com`
-- storage domain: `awcms-micro-s3.ahlikoding.com`
+- base domain: `awcms-sskobar.ahlikoding.com`
+- storage domain: `awcms-sskobar-s3.ahlikoding.com`
 - Worker name: `awcms-sskkobar-worker`
 - D1 database name: `awcms-sskkobar-d1`
 - R2 backup bucket name: `awcms-sskkobar-r2backup`
@@ -71,7 +71,7 @@ Do not commit Cloudflare tokens, secret values, or private credentials.
 
 ## Deploy
 
-1. Confirm `wrangler.jsonc` still points to `awcms-micro.ahlikoding.com` and `awcms-sskkobar-d1`.
+1. Confirm `wrangler.jsonc` still points to `awcms-sskobar.ahlikoding.com` and `awcms-sskkobar-d1`.
 2. Confirm the committed D1 `database_id` and `SESSION` namespace id still match the intended deployment target.
 3. Confirm the `MEDIA` bucket exists.
 4. Run `pnpm build`.

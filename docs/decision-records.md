@@ -80,4 +80,4 @@ When a new repository-shaping decision is introduced:
 
 1. add a short record here
 2. update the deeper supporting document
-3. update `DIVERGENCE_LOG.md` if the decision creates or retires a meaningful downstream divergence
+3. update `docs/upstream-sync/DIVERGENCE_LOG.md` if the decision creates or retires a meaningful downstream divergence

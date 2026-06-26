@@ -2,7 +2,7 @@
 
 This repository now uses the root `.env` file as the canonical operator-managed configuration source for the `satusehatkobar` workspace.
 
-The variable names stay standard and readable. The `awcms-sskkobar` naming family is applied to managed remote-service resource values where this workspace owns the resource naming, such as the template identifier, Worker name, R2 bucket names, and D1 database name.
+The variable names stay standard and readable. The deployment/resource values use the `awcms-sskkobar` naming family where this workspace owns the naming, while the Cloudflare template directory/package remains `awcms-sskobar-cloudflare`.
 
 ## Canonical Model
 
@@ -15,6 +15,15 @@ flowchart TD
     A --> F[GitHub and Cloudflare operator setup]
     F --> G[production workflows and deploy targets]
 ```
+
+## Namespace Split
+
+- Template directory: `awcmsmicro-dev/templates/awcms-sskobar-cloudflare/`
+- Template package: `@awcms-sskobar/template-sskobar-cloudflare`
+- Deployment identifier: `awcms-sskkobar`
+- Worker/database/bucket names: `awcms-sskkobar-worker`, `awcms-sskkobar-d1`, `awcms-sskkobar-r2`, `awcms-sskkobar-r2backup`
+
+Do not collapse these two naming layers unless the scripts, `wrangler` config, package metadata, workflows, and docs are all updated together.
 
 ## What The Root `.env` Owns
 

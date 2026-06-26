@@ -79,7 +79,7 @@ Documents in this folder define:
 - upstream sync status and divergence tracking
 - deployment and security baselines
 
-`docs/prd/` is a distinct sub-package: the Satu Sehat Kobar product specification (26 Markdown documents: 1 PRD induk + 25 supporting docs). It describes the product built on top of `awcmsmicro-dev/` as Native EmDash plugins and the `awcms-sskobar-cloudflare` template. Start from `docs/prd/20.Master Document Index and Implementation Guide.docx.md`; `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` bridges that spec to this workspace.
+`docs/prd/` is a distinct sub-package: the Satu Sehat Kobar product specification (26 Markdown documents: 1 PRD induk + 25 supporting docs). It describes the product built on top of `awcmsmicro-dev/` as Native EmDash plugins and the `awcms-sskobar-cloudflare` template. Start from `docs/prd/20.Master Document Index and Implementation Guide.docx.md`; `docs/prd/24.TECHNICAL_IMPLEMENTATION_REFERENCES.md` bridges that spec to this workspace. The naming split is intentional: the template directory/package stays `awcms-sskobar-cloudflare`, while deployment identifiers and Cloudflare resource names use the `awcms-sskkobar-*` family.
 
 ### `scripts/`
 

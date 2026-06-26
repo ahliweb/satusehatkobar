@@ -2,7 +2,7 @@
 
 ## Intended Example Resource
 
-- Public media domain: `awcms-micro-s3.ahlikoding.com`
+- Public media domain: `awcms-sskobar-s3.ahlikoding.com`
 
 ## Purpose
 

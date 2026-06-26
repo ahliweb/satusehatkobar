@@ -65,6 +65,7 @@ The root `.env` is the canonical operator-managed configuration source for this 
 
 - keep standard variable names in `.env`
 - use the canonical `awcms-sskkobar` naming family for workspace-owned remote resource values, including the template identifier, Worker name, R2 buckets, backup bucket, and D1 database name
+- keep the template directory/package names on the `awcms-sskobar-cloudflare` path/package while Cloudflare resource identifiers stay in the `awcms-sskkobar-*` family; this split is intentional
 - keep real secrets only in local `.env`, encrypted backup config, or platform secret stores
 - regenerate derived local runtime values and related config files with `bash scripts/sync-sskobar-env.sh`
 - let `scripts/backup/load-config.sh` read the canonical `.env` directly for backup and mirror operations
@@ -131,13 +132,15 @@ The Satu Sehat Kobar product is specified in `docs/prd/` (26 Markdown documents:
 
 Plugin data persists directly in Cloudflare D1 via `ctx.db` (Kysely), with each plugin owning its idempotent schema migrations (decision DEC-019 in `docs/prd/12`). Read `docs/prd/24` before turning any PRD requirement into plugin, schema, or migration code.
 
+Naming note: the deployable template directory/package remains `awcms-sskobar-cloudflare` / `@awcms-sskobar/template-sskobar-cloudflare`, while the deployment identifier and Cloudflare resources use the `awcms-sskkobar-*` family.
+
 ### Implementation via AI-ready issues
 
 Work is tracked as self-contained GitHub issues sized for a junior AI model with a limited token budget. Each `ai-ready` issue embeds a Context Capsule and cites only 1–2 doc sections.
 
 - `docs/prd/25.AI_READY_ISSUE_PLAYBOOK_AND_INDEX.md` — issue-authoring standard + the full backlog coverage index (item → issue).
 - Pinned issue **#11 `[CAPSULE]`** — shared invariants every issue references.
-- Issue templates: `.github/ISSUE_TEMPLATE/feature-ai-ready.md`, `ui-ux-ai-ready.md`. Milestones `Sprint 0`–`Sprint 6`.
+- Issue templates: `.github/ISSUE_TEMPLATE/feature-ai-ready.md`, `.github/ISSUE_TEMPLATE/ui-ux-ai-ready.md`, `.github/ISSUE_TEMPLATE/docs-governance-ai-ready.md`. Milestones `Sprint 0`–`Sprint 6`.
 - Per-part execution skills (`.opencode/skills/`): `sskobar-plugin-execution`, `-data-d1`, `-api-rbac`, `-ui-admin`, `-approval-workflow`, `-documents-pdf`, `-evidence-journal`, `-dashboard-spm`, `-master-data`, `-integration-backend`, `-e2e-release`, `-prd-governance`.
 - The full MVP backlog is filed as issues **#11–#127** covering the whole functional app: UI/UX foundation, 11 functional epics, Master Data Foundation, Backend & Integration Foundation, Admin Console (operate the app), and E2E/UAT/Release (ship it). Execution order + MVP guardrails: doc 25 §7. External integrations (TTE/SRIKANDI/SIMPEG/SIPD/WA/email) stay Phase 2 — MVP builds only the integration foundation/extension points.
 

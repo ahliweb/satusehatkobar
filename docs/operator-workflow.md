@@ -37,6 +37,7 @@ flowchart TD
 
 ```bash
 bash scripts/update-emdash-latest.sh
+bash scripts/update-awcms-latest.sh
 ```
 
 ### 2. Rebuild The AWCMS-Micro Workspace
@@ -61,12 +62,13 @@ bash scripts/validate-awcmsmicro-dev.sh
 bash scripts/sync-and-validate-awcmsmicro-dev.sh
 ```
 
-This combined path now refreshes env-derived config from the root `.env`, validates the canonical `awcms-sskkobar` configuration, and only then runs the workspace validation sequence.
+This combined path now refreshes env-derived config from the root `.env`, validates the canonical `awcms-sskkobar` deployment/resource configuration, and only then runs the workspace validation sequence for the `awcms-sskobar-cloudflare` template and the rest of `awcmsmicro-dev`.
 
-### 5. Check AWCMS Versioning Status
+### 5. Check Root And Workspace Versioning Status
 
 ```bash
 bash scripts/awcms-root-versioning.sh status
+node scripts/awcms-version.mjs status
 node awcmsmicro-dev/.github/scripts/awcms-version.mjs status
 ```
 
@@ -106,6 +108,7 @@ When preparing the independent `awcms-micro` repository state:
 ## Documentation To Update When Needed
 
 - `docs/upstream-sync/UPSTREAM_SYNC_STATUS.md`
+- `docs/upstream-sync/LAST_AWCMS_MICRO_FETCH.md`
 - `docs/upstream-sync/DIVERGENCE_LOG.md`
 - `docs/upstream-sync/COMPATIBILITY_MATRIX.md`
 - `docs/deployment/cloudflare.md`

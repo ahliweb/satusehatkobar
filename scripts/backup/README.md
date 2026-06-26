@@ -64,7 +64,7 @@ shred -u scripts/backup/.backup-config
 | Setting                 | Description                  | Example                  |
 | ----------------------- | ---------------------------- | ------------------------ |
 | `GITLAB_USERNAME`       | GitLab account username      | `myusername`             |
-| `GITLAB_REPO_NAME`      | GitLab repo for mirror       | `awcms-micro`            |
+| `GITLAB_REPO_NAME`      | GitLab repo for mirror       | `awcms-sskobar`          |
 | `GITLAB_PAT`            | GitLab personal access token | `glpat-...`              |
 | `R2_BUCKET_NAME`        | Cloudflare R2 bucket         | `awcms-sskkobar-r2backup` |
 | `CLOUDFLARE_API_TOKEN`  | Cloudflare API token         | `abc123...`              |
@@ -162,8 +162,8 @@ bash scripts/backup/recovery-checklist.sh
 
 | Workflow               | Schedule       | Description           |
 | ---------------------- | -------------- | --------------------- |
-| `backup-automated.yml` | Daily 2 AM UTC | Database backup to R2 |
-| `mirror-to-gitlab.yml` | On every push  | Mirror repo to GitLab |
+| `.github/workflows/backup-automated.yml` | Daily 2 AM UTC | Database backup to R2 |
+| `.github/workflows/mirror-to-gitlab.yml` | On every push when enabled for the current repo | Mirror repo to GitLab |
 
 ### GitHub Secrets Required
 
@@ -202,7 +202,7 @@ Set these as repository variables (not secrets) so workflows can stay aligned wi
 | Variable                                | Recommended Value                          |
 | --------------------------------------- | ------------------------------------------ |
 | `GITLAB_USERNAME`                       | `ahliweb`                                  |
-| `GITLAB_REPO_NAME`                      | `awcms-micro`                              |
+| `GITLAB_REPO_NAME`                      | `awcms-sskobar`                            |
 | `GITHUB_ACTION_NODE_VERSION`            | `22`                                       |
 | `GITHUB_ACTION_PNPM_VERSION`            | `11.1.3`                                   |
 | `GITHUB_ACTION_TEMPLATE_NAME`           | `awcms-sskkobar`                           |
@@ -218,6 +218,12 @@ flowchart TD
     C --> E[backup and recovery scripts]
     C --> F[GitHub and GitLab operator flows]
 ```
+
+## Mirror Workflow Note
+
+The local PAT-based mirror flow is always available through `scripts/backup/load-config.sh` and the GitLab variables in the root `.env` / encrypted backup config.
+
+The GitHub Actions mirror workflow at `.github/workflows/mirror-to-gitlab.yml` currently includes a repository guard. If you expect automation from the current `satusehatkobar` repository, review that guard before assuming the workflow will run.
 
 ```
 Unencrypted (NEVER commit)          Encrypted (SAFE to commit in private repo)

@@ -19,13 +19,15 @@ flowchart LR
     G --> W
 ```
 
-- Base domain: `awcms-micro.ahlikoding.com`
-- Storage domain: `awcms-micro-s3.ahlikoding.com`
+- Base domain: `awcms-sskobar.ahlikoding.com`
+- Storage domain: `awcms-sskobar-s3.ahlikoding.com`
 - Template identifier: `awcms-sskkobar`
 - Worker name: `awcms-sskkobar-worker`
 - D1 database name: `awcms-sskkobar-d1`
 - R2 media bucket name: `awcms-sskkobar-r2`
 - R2 backup bucket name: `awcms-sskkobar-r2backup`
+
+The directory/package name for the Cloudflare template intentionally stays `awcms-sskobar-cloudflare` / `@awcms-sskobar/template-sskobar-cloudflare` even though the deployed resource values use the `awcms-sskkobar-*` family.
 
 Do not commit tokens, secrets, or private credentials. This repository's reference Cloudflare template may commit non-secret resource identifiers such as D1 and KV binding IDs when they are part of the checked-in example deployment shape.
 
@@ -62,9 +64,9 @@ Do not commit tokens, secrets, or private credentials. This repository's referen
 | `D1` / database binding | Primary application database | template `wrangler.jsonc` | Keep the committed ID aligned with the intended example deployment target |
 | `MEDIA` | Media object storage | template `wrangler.jsonc` | Backed by R2 |
 | `LOADER` | Worker Loader / plugin sandbox support | template `wrangler.jsonc` | Keep prepared even if no sandboxed plugin is active yet |
-| session namespace or equivalent | Session storage | template config / deployment env | Keep the committed ID aligned with the intended example deployment target |
-| public app hostname | User-facing site domain | DNS + Worker route config | Example: `awcms-micro.ahlikoding.com` |
-| storage hostname | Public storage edge domain | DNS + R2/public edge config | Example: `awcms-micro-s3.ahlikoding.com` |
+| `SESSION` | Session storage | template config / deployment env | Keep the committed ID aligned with the intended example deployment target |
+| public app hostname | User-facing site domain | DNS + Worker route config | Example: `awcms-sskobar.ahlikoding.com` |
+| storage hostname | Public storage edge domain | DNS + R2/public edge config | Example: `awcms-sskobar-s3.ahlikoding.com` |
 
 ## Secrets And Variables
 
